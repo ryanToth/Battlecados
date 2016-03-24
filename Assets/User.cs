@@ -3,6 +3,16 @@ using System.Collections;
 
 public class User : MonoBehaviour {
 
+    private Avocado _avocado;
+
+    public Avocado Acocado
+    {
+        get
+        {
+            return _avocado;
+        }
+    }
+
     private string _username;
 
     public string Username
@@ -73,10 +83,12 @@ public class User : MonoBehaviour {
         _goldPacks = 1;
         // Start them off on level 1
         _storyLevel = 1;
+        // Create them a new avocado
+        _avocado = new Avocado();
     }
 
     // Called any other time a user logs in successfully
-    public User(string username, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel)
+    public User(string username, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
     {
         _username = username;
         _gold = gold;
@@ -84,17 +96,18 @@ public class User : MonoBehaviour {
         _silverPacks = silverPacks;
         _goldPacks = goldPacks;
         _storyLevel = storyLevel;
+        _avocado = avocado;
     }
 
     // After every battle, this function is called to reward the player
-    public void BattleCompleted(int goldGained, int experienceGained)
+    public void battleCompleted(int goldGained, int experienceGained)
     {
         _gold += goldGained;
-        // Once avocado class is implemented, increase its experience
+        _avocado.GainExperiencePoints(experienceGained);
     }
 
     // Returns true if pack was successfully purchased, false otherwise
-    public bool BuyBronzePack(int price)
+    public bool buyBronzePack(int price)
     {
         if (_gold >= price)
         {
@@ -107,7 +120,7 @@ public class User : MonoBehaviour {
     }
 
     // Returns true if pack was successfully purchased, false otherwise
-    public bool BuySilverPack(int price)
+    public bool buySilverPack(int price)
     {
         if (_gold >= price)
         {
@@ -120,7 +133,7 @@ public class User : MonoBehaviour {
     }
 
     // Returns true if pack was successfully purchased, false otherwise
-    public bool BuyGoldPack(int price)
+    public bool buyGoldPack(int price)
     {
         if (_gold >= price)
         {
@@ -133,7 +146,7 @@ public class User : MonoBehaviour {
     }
 
     // Returns true if the user has packs to be opened, false otherwise
-    public bool OpenBronzePack()
+    public bool openBronzePack()
     {
         if (_bronzePacks > 0)
         {
@@ -144,7 +157,7 @@ public class User : MonoBehaviour {
     }
 
     // Returns true if the user has packs to be opened, false otherwise
-    public bool OpenSilverPack()
+    public bool openSilverPack()
     {
         if (_silverPacks > 0)
         {
@@ -155,7 +168,7 @@ public class User : MonoBehaviour {
     }
 
     // Returns true if the user has packs to be opened, false otherwise
-    public bool OpenGoldPack()
+    public bool openGoldPack()
     {
         if (_goldPacks > 0)
         {
@@ -165,7 +178,8 @@ public class User : MonoBehaviour {
         return false;
     }
 
-    public void GoToNextLevel()
+    // This function is called whenever the user moves to the next level in the story mode
+    public void goToNextLevel()
     {
         _storyLevel++;
     }
