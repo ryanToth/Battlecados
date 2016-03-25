@@ -360,7 +360,7 @@ public class User : MonoBehaviour {
         if (card != null) Cards.Add(card);
     }
 
-    // Unequips the card from the avocado and returns it to the User's card collection
+    // Unequips the support card at the specified index from the avocado and returns it to the User's card collection
     public void UnequipSupportCard(int index)
     {
         Card card = _avocado.UnequipSupportCard(index);
