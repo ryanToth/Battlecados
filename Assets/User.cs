@@ -401,6 +401,36 @@ public class User : MonoBehaviour {
         if (card != null) Cards.Add(card);
     }
 
+    public void OpenBronzePack()
+    {
+        if (_bronzePacks > 0)
+        {
+            BronzePack pack = new BronzePack();
+            Cards.AddRange(pack.Open());
+            _bronzePacks--;
+        }
+    }
+
+    public void OpenSilverPack()
+    {
+        if (_silverPacks > 0)
+        {
+            SilverPack pack = new SilverPack();
+            Cards.AddRange(pack.Open());
+            _silverPacks--;
+        }
+    }
+
+    public void OpenGoldPack()
+    {
+        if (_goldPacks > 0)
+        {
+            GoldPack pack = new GoldPack();
+            Cards.AddRange(pack.Open());
+            _goldPacks--;
+        }
+    }
+
     // Use this for initialization
     void Start () {
 	
