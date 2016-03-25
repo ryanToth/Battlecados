@@ -23,18 +23,5 @@
     <health>4</health>
     <salvageValue>45</salvageValue>
   </card>
-
-  <card>
-    <id>2</id>
-    <cardType>4</cardType>
-    <name>Sanic Shoes</name>
-    <flavourText>Super speedy shoes</flavourText>
-    <attack>0</attack>
-    <defence>0</defence>
-    <speed>25</speed>
-    <health>0</health>
-    <salvageValue>30</salvageValue>
-  </card>
-  
 </cards>
 
