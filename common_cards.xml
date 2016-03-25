@@ -36,16 +36,5 @@
     <salvageValue>30</salvageValue>
   </card>
   
-  <card>
-    <id>3</id>
-    <cardType>5</cardType>
-    <name>Ca$h Money $wag</name>
-    <flavourText>Swag</flavourText>
-    <attack>0</attack>
-    <defence>0</defence>
-    <speed>0</speed>
-    <health>0</health>
-    <salvageValue>420</salvageValue>
-  </card>
 </cards>
 
