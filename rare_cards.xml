@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cards>
+  <card>
+    <id>2000</id>
+    <cardType>3</cardType>
+    <name>Trash Can With Holes for Arms</name>
+    <flavourText>Oscar would be proud</flavourText>
+    <attack>0</attack>
+    <defence>25</defence>
+    <speed>-10</speed>
+    <health>5</health>
+    <salvageValue>160</salvageValue>
+  </card>
+</cards>

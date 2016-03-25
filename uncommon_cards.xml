@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cards>
+  <card>
+    <id>1000</id>
+    <cardType>1</cardType>
+    <name>Staff of Smiting</name>
+    <flavourText>He's a cooking a something up</flavourText>
+    <attack>15</attack>
+    <defence>0</defence>
+    <speed>0</speed>
+    <health>5</health>
+    <salvageValue>79</salvageValue>
+  </card>
+</cards>
