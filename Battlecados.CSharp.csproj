@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Avocado.cs" />
+    <Compile Include="Assets\AvocadoFactory.cs" />
     <Compile Include="Assets\BronzePack.cs" />
     <Compile Include="Assets\Card.cs" />
     <Compile Include="Assets\CardEffect.cs" />
