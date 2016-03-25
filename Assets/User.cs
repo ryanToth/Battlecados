@@ -198,14 +198,14 @@ public class User : MonoBehaviour {
     }
 
     // After every battle, this function is called to reward the player
-    public void battleCompleted(int goldGained, int experienceGained)
+    public void BattleCompleted(int goldGained, int experienceGained)
     {
         _gold += goldGained;
         _avocado.GainExperiencePoints(experienceGained);
     }
 
     // Returns true if pack was successfully purchased, false otherwise
-    public bool buyBronzePack(int price)
+    public bool BuyBronzePack(int price)
     {
         if (_gold >= price)
         {
@@ -218,7 +218,7 @@ public class User : MonoBehaviour {
     }
 
     // Returns true if pack was successfully purchased, false otherwise
-    public bool buySilverPack(int price)
+    public bool BuySilverPack(int price)
     {
         if (_gold >= price)
         {
@@ -231,7 +231,7 @@ public class User : MonoBehaviour {
     }
 
     // Returns true if pack was successfully purchased, false otherwise
-    public bool buyGoldPack(int price)
+    public bool BuyGoldPack(int price)
     {
         if (_gold >= price)
         {
@@ -243,41 +243,8 @@ public class User : MonoBehaviour {
         return false;
     }
 
-    // Returns true if the user has packs to be opened, false otherwise
-    public bool openBronzePack()
-    {
-        if (_bronzePacks > 0)
-        {
-            _bronzePacks--;
-            return true;
-        }
-        return false;
-    }
-
-    // Returns true if the user has packs to be opened, false otherwise
-    public bool openSilverPack()
-    {
-        if (_silverPacks > 0)
-        {
-            _silverPacks--;
-            return true;
-        }
-        return false;
-    }
-
-    // Returns true if the user has packs to be opened, false otherwise
-    public bool openGoldPack()
-    {
-        if (_goldPacks > 0)
-        {
-            _goldPacks--;
-            return true;
-        }
-        return false;
-    }
-
     // Remove card from collection and add its salvage value to the User's gold
-    public void salvageCard(Card card)
+    public void SalvageCard(Card card)
     {
         if (Cards.Remove(card))
         {
@@ -286,83 +253,83 @@ public class User : MonoBehaviour {
     }
 
     // This function is called whenever the user moves to the next level in the story mode
-    public void goToNextLevel()
+    public void GoToNextLevel()
     {
         _storyLevel++;
     }
 
-    public void equipRightHandWeapon(Card card)
+    public void EquipRightHandWeapon(Card card)
     {
         if (card.CardType != CardType.OneHandedWeapon) return;
 
-        _avocado.equipRightHandWeapon(card);
+        _avocado.EquipRightHandWeapon(card);
         Cards.Remove(card);
     }
 
-    public void equipLeftHandWeapon(Card card)
+    public void EquipLeftHandWeapon(Card card)
     {
         if (card.CardType != CardType.OneHandedWeapon) return;
 
-        _avocado.equipLeftHandWeapon(card);
+        _avocado.EquipLeftHandWeapon(card);
         Cards.Remove(card);
     }
 
-    // Used to equip cards to avocados, except for one handed weapons, removes the card from the User's card collection so they cannot equip the ame card multiple times
-    public void equipCardToAvocado(Card card)
+    // Used to equip cards to avocados, except for one handed weapons, removes the card from the User's card collection so they cannot equip the same card multiple times
+    public void EquipCardToAvocado(Card card)
     {
 
         switch (card.CardType)
         {
             case CardType.TwoHandedWeapon:
 
-                if (Cards.Remove(card)) _avocado.equipTwoHandWeapon(card);
+                if (Cards.Remove(card)) _avocado.EquipTwoHandWeapon(card);
                 break;
 
             case CardType.HeadArmor:
 
-                if (Cards.Remove(card)) _avocado.equipHeadArmor(card);
+                if (Cards.Remove(card)) _avocado.EquipHeadArmor(card);
                 break;
 
             case CardType.ChestArmor:
 
-                if (Cards.Remove(card)) _avocado.equipChestArmor(card);
+                if (Cards.Remove(card)) _avocado.EquipChestArmor(card);
                 break;
 
             case CardType.LegArmor:
 
-                if (Cards.Remove(card)) _avocado.equipLegArmor(card);
+                if (Cards.Remove(card)) _avocado.EquipLegArmor(card);
                 break;
 
             case CardType.ArmArmor:
 
-                if (Cards.Remove(card)) _avocado.equipArmArmor(card);
+                if (Cards.Remove(card)) _avocado.EquipArmArmor(card);
                 break;
 
             case CardType.Support:
 
-                if (_avocado.tryEquipSupportCard(card)) Cards.Remove(card);
+                if (_avocado.TryEquipSupportCard(card)) Cards.Remove(card);
                 break;
         }
     }
 
     // Unequips the card from the avocado and returns it to the User's card collection
-    public void unequipRightHandWeapon()
+    public void UnequipRightHandWeapon()
     {
-        Card card = _avocado.unequipRightHandWeapon();
+        Card card = _avocado.UnequipRightHandWeapon();
 
         if (card != null) Cards.Add(card);
     }
 
     // Unequips the card from the avocado and returns it to the User's card collection
-    public void unequipLeftHandWeapon()
+    public void UnequipLeftHandWeapon()
     {
-        Card card = _avocado.unequipLeftHandWeapon();
+        Card card = _avocado.UnequipLeftHandWeapon();
 
         if (card != null) Cards.Add(card);
     }
 
     // Used to unequip any card attached to an avocado except for support cards and one handed weapons. Returns the card to the User's card collection
-    public void unequipCard(CardType cardType)
+    public void UnequipCard(CardType cardType)
     {
         Card card = null;
 
@@ -370,23 +337,23 @@ public class User : MonoBehaviour {
         {
             case CardType.TwoHandedWeapon:
 
-                card = _avocado.unequipTwoHandedWeapon();
+                card = _avocado.UnequipTwoHandedWeapon();
                 break;
             case CardType.HeadArmor:
 
-                card = _avocado.unequipHeadArmor();
+                card = _avocado.UnequipHeadArmor();
                 break;
             case CardType.ChestArmor:
 
-                card = _avocado.unequipChestArmor();
+                card = _avocado.UnequipChestArmor();
                 break;
             case CardType.LegArmor:
 
-                card = _avocado.unequipLegArmor();
+                card = _avocado.UnequipLegArmor();
                 break;
             case CardType.ArmArmor:
 
-                card = _avocado.unequipArmArmor();
+                card = _avocado.UnequipArmArmor();
                 break;
         }
 
@@ -394,9 +361,9 @@ public class User : MonoBehaviour {
     }
 
     // Unequips the card from the avocado and returns it to the User's card collection
-    public void unequipSupportCard(int index)
+    public void UnequipSupportCard(int index)
     {
-        Card card = _avocado.unequipSupportCard(index);
+        Card card = _avocado.UnequipSupportCard(index);
 
         if (card != null) Cards.Add(card);
     }

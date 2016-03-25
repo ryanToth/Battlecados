@@ -184,7 +184,7 @@ public class Avocado : MonoBehaviour {
     }
 
     // Lower the avocado's remaining health by the amount of damage taken, return true if the avocado has died, false otherwise
-    public bool recieveDamage(int damage)
+    public bool RecieveDamage(int damage)
     {
         _remainingHealth -= damage;
 
@@ -315,15 +315,15 @@ public class Avocado : MonoBehaviour {
     }
 
     // Try to equip a right handed weapon, if one is already equipped or a two handed weapon is already equipped, equip the new card and return the old one
-    public Card equipRightHandWeapon(Card weapon)
+    public Card EquipRightHandWeapon(Card weapon)
     {
         Card cardToReturn = null;
 
         // If the card is not a one handed weapon, do not equip it
         if (weapon.CardType != CardType.OneHandedWeapon) return null;
 
-        if (_twoHandedWeapon != null) cardToReturn = unequipTwoHandedWeapon();
-        if (_rightHandWeapon != null) cardToReturn = unequipRightHandWeapon();
+        if (_twoHandedWeapon != null) cardToReturn = UnequipTwoHandedWeapon();
+        if (_rightHandWeapon != null) cardToReturn = UnequipRightHandWeapon();
 
         _rightHandWeapon = weapon;
 
@@ -331,15 +331,15 @@ public class Avocado : MonoBehaviour {
     }
 
     // Try to equip a left handed weapon, if one is already equipped or a two handed weapon is already equipped, equip the new card and return the old one
-    public Card equipLeftHandWeapon(Card weapon)
+    public Card EquipLeftHandWeapon(Card weapon)
     {
         Card cardToReturn = null;
 
         // If the card is not a one handed weapon, do not equip it
         if (weapon.CardType != CardType.OneHandedWeapon) return null;
 
-        if (_twoHandedWeapon != null) cardToReturn = unequipTwoHandedWeapon();
-        if (_leftHandWeapon != null) cardToReturn = unequipLeftHandWeapon();
+        if (_twoHandedWeapon != null) cardToReturn = UnequipTwoHandedWeapon();
+        if (_leftHandWeapon != null) cardToReturn = UnequipLeftHandWeapon();
 
         _leftHandWeapon = weapon;
 
@@ -347,16 +347,16 @@ public class Avocado : MonoBehaviour {
     }
 
     // Try to equip a two handed weapon, if one is already equipped or one handed weapons are already equipped, equip the new card and return the old ones
-    public List<Card> equipTwoHandWeapon(Card weapon)
+    public List<Card> EquipTwoHandWeapon(Card weapon)
     {
         List<Card> cardsToReturn = new List<Card>();
 
         // If the card is not a one handed weapon, do not equip it
         if (weapon.CardType != CardType.TwoHandedWeapon) return null;
 
-        if (_twoHandedWeapon != null) cardsToReturn.Add(unequipTwoHandedWeapon());
-        if (_leftHandWeapon != null) cardsToReturn.Add(unequipLeftHandWeapon());
-        if (_rightHandWeapon != null) cardsToReturn.Add(unequipRightHandWeapon());
+        if (_twoHandedWeapon != null) cardsToReturn.Add(UnequipTwoHandedWeapon());
+        if (_leftHandWeapon != null) cardsToReturn.Add(UnequipLeftHandWeapon());
+        if (_rightHandWeapon != null) cardsToReturn.Add(UnequipRightHandWeapon());
 
         _twoHandedWeapon = weapon;
 
@@ -364,14 +364,14 @@ public class Avocado : MonoBehaviour {
     }
 
     // Try to equip head armor, if one is already equipped, remove it, equip the new card and return the old one
-    public Card equipHeadArmor(Card armor)
+    public Card EquipHeadArmor(Card armor)
     {
         Card cardToReturn = null;
 
         // If the card is not head armor, do not equip it
         if (armor.CardType != CardType.HeadArmor) return null;
 
-        if (_headArmor != null) cardToReturn = unequipHeadArmor();
+        if (_headArmor != null) cardToReturn = UnequipHeadArmor();
 
         _headArmor = armor;
 
@@ -379,14 +379,14 @@ public class Avocado : MonoBehaviour {
     }
 
     // Try to equip chest armor, if one is already equipped, remove it, equip the new card and return the old one
-    public Card equipChestArmor(Card armor)
+    public Card EquipChestArmor(Card armor)
     {
         Card cardToReturn = null;
 
         // If the card is not chest armor, do not equip it
         if (armor.CardType != CardType.ChestArmor) return null;
 
-        if (_chestArmor != null) cardToReturn = unequipChestArmor();
+        if (_chestArmor != null) cardToReturn = UnequipChestArmor();
 
         _chestArmor = armor;
 
@@ -394,14 +394,14 @@ public class Avocado : MonoBehaviour {
     }
 
     // Try to equip leg armor, if one is already equipped, remove it, equip the new card and return the old one
-    public Card equipLegArmor(Card armor)
+    public Card EquipLegArmor(Card armor)
     {
         Card cardToReturn = null;
 
         // If the card is not leg armor, do not equip it
         if (armor.CardType != CardType.LegArmor) return null;
 
-        if (_legArmor != null) cardToReturn = unequipLegArmor();
+        if (_legArmor != null) cardToReturn = UnequipLegArmor();
 
         _legArmor = armor;
 
@@ -410,14 +410,14 @@ public class Avocado : MonoBehaviour {
 
 
     // Try to equip arm armor, if one is already equipped, remove it, equip the new card and return the old one
-    public Card equipArmArmor(Card armor)
+    public Card EquipArmArmor(Card armor)
     {
         Card cardToReturn = null;
 
         // If the card is not arm armor, do not equip it
         if (armor.CardType != CardType.ArmArmor) return null;
 
-        if (_armArmor != null) cardToReturn = unequipArmArmor();
+        if (_armArmor != null) cardToReturn = UnequipArmArmor();
 
         _armArmor = armor;
 
@@ -425,7 +425,7 @@ public class Avocado : MonoBehaviour {
     }
 
     // If there are already 5 support cards equipped, do not equip the new card and return false, otherwise equip the card and return true;
-    public bool tryEquipSupportCard(Card card)
+    public bool TryEquipSupportCard(Card card)
     {
         if (SupportCards.Count == 5) return false;
 
@@ -434,56 +434,56 @@ public class Avocado : MonoBehaviour {
         return true;
     }
 
-    public Card unequipRightHandWeapon()
+    public Card UnequipRightHandWeapon()
     {
         Card cardToReturn = _rightHandWeapon;
         _rightHandWeapon = null;
         return cardToReturn;
     }
 
-    public Card unequipLeftHandWeapon()
+    public Card UnequipLeftHandWeapon()
     {
         Card cardToReturn = _leftHandWeapon;
         _leftHandWeapon = null;
         return cardToReturn;
     }
 
-    public Card unequipTwoHandedWeapon()
+    public Card UnequipTwoHandedWeapon()
     {
         Card cardToReturn = _twoHandedWeapon;
         _twoHandedWeapon = null;
         return cardToReturn;
     }
 
-    public Card unequipHeadArmor()
+    public Card UnequipHeadArmor()
     {
         Card cardToReturn = _headArmor;
         _headArmor = null;
         return cardToReturn;
     }
 
-    public Card unequipChestArmor()
+    public Card UnequipChestArmor()
     {
         Card cardToReturn = _chestArmor;
         _chestArmor = null;
         return cardToReturn;
     }
 
-    public Card unequipLegArmor()
+    public Card UnequipLegArmor()
     {
         Card cardToReturn = _legArmor;
         _legArmor = null;
         return cardToReturn;
     }
 
-    public Card unequipArmArmor()
+    public Card UnequipArmArmor()
     {
         Card cardToReturn = _armArmor;
         _armArmor = null;
         return cardToReturn;
     }
 
-    public Card unequipSupportCard(int index)
+    public Card UnequipSupportCard(int index)
     {
         // No support card at index
         if (!(SupportCards.Count > index)) return null;
