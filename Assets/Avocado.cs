@@ -212,8 +212,8 @@ public class Avocado : MonoBehaviour {
         }
     }
 
-    // The Avocado's defense, if card bonuses drop it below 0, return 1
-    public int Defense
+    // The Avocado's defence, if card bonuses drop it below 0, return 1
+    public int Defence
     {
         get
         {
