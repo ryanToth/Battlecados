@@ -3,6 +3,16 @@ using System.Collections;
 
 public class Card : MonoBehaviour {
 
+    private string _name;
+
+    public string Name
+    {
+        get
+        {
+            return _name;
+        }
+    }
+
     private string _flavourText;
 
     public string FlavourText
@@ -55,8 +65,9 @@ public class Card : MonoBehaviour {
 
     private CardEffect _cardEffect;
 
-    public Card(string flavourText, int cardID, int salvageValue, CardType cardType, CardRarity cardRarity, CardEffect cardEffect)
+    public Card(string name, string flavourText, int cardID, int salvageValue, CardType cardType, CardRarity cardRarity, CardEffect cardEffect)
     {
+        _name = name;
         _flavourText = flavourText;
         _cardID = cardID;
         _salvageValue = salvageValue;
