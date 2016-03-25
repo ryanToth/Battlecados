@@ -122,22 +122,6 @@ public class User : MonoBehaviour {
         }
     }
 
-    public IEnumerable<Card> LegArmorCards
-    {
-        get
-        {
-            return from card in Cards where card.CardType == CardType.LegArmor select card;
-        }
-    }
-
-    public IEnumerable<Card> ArmArmorCards
-    {
-        get
-        {
-            return from card in Cards where card.CardType == CardType.ArmArmor select card;
-        }
-    }
-
     public IEnumerable<Card> SupportCards
     {
         get
@@ -151,7 +135,6 @@ public class User : MonoBehaviour {
         get
         {
             return from card in Cards where card.CardType == CardType.ChestArmor 
-                   || card.CardType == CardType.ArmArmor || card.CardType == CardType.LegArmor
                    || card.CardType == CardType.HeadArmor select card;
         }
     }
@@ -295,16 +278,6 @@ public class User : MonoBehaviour {
                 if (Cards.Remove(card)) _avocado.EquipChestArmor(card);
                 break;
 
-            case CardType.LegArmor:
-
-                if (Cards.Remove(card)) _avocado.EquipLegArmor(card);
-                break;
-
-            case CardType.ArmArmor:
-
-                if (Cards.Remove(card)) _avocado.EquipArmArmor(card);
-                break;
-
             case CardType.Support:
 
                 if (_avocado.TryEquipSupportCard(card)) Cards.Remove(card);
@@ -346,14 +319,6 @@ public class User : MonoBehaviour {
             case CardType.ChestArmor:
 
                 card = _avocado.UnequipChestArmor();
-                break;
-            case CardType.LegArmor:
-
-                card = _avocado.UnequipLegArmor();
-                break;
-            case CardType.ArmArmor:
-
-                card = _avocado.UnequipArmArmor();
                 break;
         }
 

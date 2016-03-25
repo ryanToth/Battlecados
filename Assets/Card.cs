@@ -118,10 +118,8 @@ public enum CardType
     TwoHandedWeapon = 1,
     HeadArmor = 2,
     ChestArmor = 3,
-    LegArmor = 4,
-    ArmArmor = 5,
-    Support = 6,
-    Salvage = 7
+    Support = 4,
+    Treasure = 5
 }
 
 public enum CardRarity

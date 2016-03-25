@@ -74,26 +74,6 @@ public class Avocado : MonoBehaviour {
         }
     }
 
-    private Card _legArmor;
-
-    public Card LegArmor
-    {
-        get
-        {
-            return _legArmor;
-        }
-    }
-
-    private Card _armArmor;
-
-    public Card ArmArmor
-    {
-        get
-        {
-            return _armArmor;
-        }
-    }
-
     private List<Card> _supportCards;
 
     public List<Card> SupportCards
@@ -131,7 +111,7 @@ public class Avocado : MonoBehaviour {
 
     // Avocado constructor for existing avocados
     public Avocado(int level, int experiencePoints, Card rightHandedWeapon, Card leftHandedWeapon, Card twoHandedWeapon,
-        Card headArmor, Card chestArmor, Card legArmor, Card armArmor, List<Card> supportCards)
+        Card headArmor, Card chestArmor, List<Card> supportCards)
     {
         _level = level;
         _experiencePoints = experiencePoints;
@@ -140,8 +120,6 @@ public class Avocado : MonoBehaviour {
         _twoHandedWeapon = twoHandedWeapon;
         _headArmor = headArmor;
         _chestArmor = chestArmor;
-        _legArmor = legArmor;
-        _armArmor = armArmor;
         _supportCards = supportCards;
         _remainingHealth = MaxHealth;
     }
@@ -250,8 +228,6 @@ public class Avocado : MonoBehaviour {
             if (_twoHandedWeapon != null) bonus += _twoHandedWeapon.AttackEffect;
             if (_headArmor != null) bonus += _headArmor.AttackEffect;
             if (_chestArmor != null) bonus += _chestArmor.AttackEffect;
-            if (_legArmor != null) bonus += _legArmor.AttackEffect;
-            if (_armArmor != null) bonus += _armArmor.AttackEffect;
 
             return bonus;
         }
@@ -269,8 +245,6 @@ public class Avocado : MonoBehaviour {
             if (_twoHandedWeapon != null) bonus += _twoHandedWeapon.DefenceEffect;
             if (_headArmor != null) bonus += _headArmor.DefenceEffect;
             if (_chestArmor != null) bonus += _chestArmor.DefenceEffect;
-            if (_legArmor != null) bonus += _legArmor.DefenceEffect;
-            if (_armArmor != null) bonus += _armArmor.DefenceEffect;
 
             return bonus;
         }
@@ -288,8 +262,6 @@ public class Avocado : MonoBehaviour {
             if (_twoHandedWeapon != null) bonus += _twoHandedWeapon.HealthEffect;
             if (_headArmor != null) bonus += _headArmor.HealthEffect;
             if (_chestArmor != null) bonus += _chestArmor.HealthEffect;
-            if (_legArmor != null) bonus += _legArmor.HealthEffect;
-            if (_armArmor != null) bonus += _armArmor.HealthEffect;
 
             return bonus;
         }
@@ -307,8 +279,6 @@ public class Avocado : MonoBehaviour {
             if (_twoHandedWeapon != null) bonus += _twoHandedWeapon.SpeedEffect;
             if (_headArmor != null) bonus += _headArmor.SpeedEffect;
             if (_chestArmor != null) bonus += _chestArmor.SpeedEffect;
-            if (_legArmor != null) bonus += _legArmor.SpeedEffect;
-            if (_armArmor != null) bonus += _armArmor.SpeedEffect;
 
             return bonus;
         }
@@ -393,37 +363,6 @@ public class Avocado : MonoBehaviour {
         return cardToReturn;
     }
 
-    // Try to equip leg armor, if one is already equipped, remove it, equip the new card and return the old one
-    public Card EquipLegArmor(Card armor)
-    {
-        Card cardToReturn = null;
-
-        // If the card is not leg armor, do not equip it
-        if (armor.CardType != CardType.LegArmor) return null;
-
-        if (_legArmor != null) cardToReturn = UnequipLegArmor();
-
-        _legArmor = armor;
-
-        return cardToReturn;
-    }
-
-
-    // Try to equip arm armor, if one is already equipped, remove it, equip the new card and return the old one
-    public Card EquipArmArmor(Card armor)
-    {
-        Card cardToReturn = null;
-
-        // If the card is not arm armor, do not equip it
-        if (armor.CardType != CardType.ArmArmor) return null;
-
-        if (_armArmor != null) cardToReturn = UnequipArmArmor();
-
-        _armArmor = armor;
-
-        return cardToReturn;
-    }
-
     // If there are already 5 support cards equipped, do not equip the new card and return false, otherwise equip the card and return true;
     public bool TryEquipSupportCard(Card card)
     {
@@ -466,20 +405,6 @@ public class Avocado : MonoBehaviour {
     {
         Card cardToReturn = _chestArmor;
         _chestArmor = null;
-        return cardToReturn;
-    }
-
-    public Card UnequipLegArmor()
-    {
-        Card cardToReturn = _legArmor;
-        _legArmor = null;
-        return cardToReturn;
-    }
-
-    public Card UnequipArmArmor()
-    {
-        Card cardToReturn = _armArmor;
-        _armArmor = null;
         return cardToReturn;
     }
 
