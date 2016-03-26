@@ -69,6 +69,7 @@
     <Compile Include="Assets\Card.cs" />
     <Compile Include="Assets\CardEffect.cs" />
     <Compile Include="Assets\GoldPack.cs" />
+    <Compile Include="Assets\Networking\SaveManager.cs" />
     <Compile Include="Assets\Pack.cs" />
     <Compile Include="Assets\SilverPack.cs" />
     <Compile Include="Assets\User.cs" />

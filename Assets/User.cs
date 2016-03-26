@@ -149,6 +149,14 @@ public class User : MonoBehaviour {
         }
     }
 
+    public IEnumerable<int> CardCollectionIDs
+    {
+        get
+        {
+            return from card in Cards select card.CardID;
+        }
+    }
+
     // Called on create new user
     public User(string username)
     {
