@@ -77,15 +77,9 @@
     <Compile Include="Assets\User.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Card Data\common_cards.xml" />
-    <Content Include="Assets\Card Data\uncommon_cards.xml" />
-    <Content Include="Assets\Card Data\rare_cards.xml" />
+    <None Include="Assets\Card Data\common_cards.xml" />
+    <None Include="Assets\Card Data\rare_cards.xml" />
+    <None Include="Assets\Card Data\uncommon_cards.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Card Data\cards.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
