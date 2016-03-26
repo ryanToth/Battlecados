@@ -172,8 +172,8 @@ public class User : MonoBehaviour {
         _goldPacks = 1;
         // Start them off on level 1
         _storyLevel = 1;
-        // Create them a new avocado
 
+        // Create them a new avocado
         _avocado = new Avocado();
     }
 
