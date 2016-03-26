@@ -1,14 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battlecados.CSharp", "Battlecados.CSharp.csproj", "{69CDCEBD-C4F4-0570-A1DC-7DA5C2A1ADB0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73F401A5-7CDD-43DB-B91B-7789E170EF8F}"
-	ProjectSection(SolutionItems) = preProject
-		Assets\card_schema.xsd = Assets\card_schema.xsd
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
