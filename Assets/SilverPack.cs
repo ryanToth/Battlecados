@@ -4,9 +4,9 @@ public class SilverPack : Pack
 {
     public SilverPack()
     {
-        _common = 7;
-        _uncommon = 6;
-        _rare = 2;
+        _common = 2;
+        _uncommon = 2;
+        _rare = 1;
         _cost = 400;
     }
 }

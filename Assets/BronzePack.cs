@@ -4,9 +4,9 @@ public class BronzePack : Pack {
 
     public BronzePack()
     {
-        _common = 5;
-        _uncommon = 3;
-        _rare = 1;
+        _common = 4;
+        _uncommon = 1;
+        _rare = 0;
         _cost = 200;
     }
 }
