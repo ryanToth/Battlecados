@@ -50,6 +50,8 @@ public class MainMenu : MonoBehaviour {
         if (GUI.Button(new Rect(0, storyButtonY, firstTwoButtonsWidth, firstTwoButtonsHeight), "", storyButtonStyle))
         {
             print("Clicked Story Button");
+
+
         }
 
         if (GUI.Button(new Rect(0, versusButtonY, firstTwoButtonsWidth, firstTwoButtonsHeight), "", versusButtonStyle))
