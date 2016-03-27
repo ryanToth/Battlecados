@@ -2,18 +2,51 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MySql;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace Assets.Networking
 {
-    class SaveManager
+    public class SaveManager
     {
+        private static MySqlConnection DatabaseConnect()
+        {
+            string connStr = "server=userdb.cvk754rpwemy.us-east-1.rds.amazonaws.com;port=3306;user=battlecado;password=milehigh;database=User;";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return conn;
+        }
+        private static void DatabaseDisconnect(MySqlConnection conn)
+        {
+            conn.Close();
+            Console.WriteLine("Database connection closed");
+        }
         // Attempts to get the user's info from the database, returns true if user was found, false otherwise, sends the user back all their info
         // Should be called from the LogIn page controller
         public static bool TryLogIn(string username, string password, out User user)
         {
             bool found = true;
-
+            MySqlConnection conn = DatabaseConnect();
+            string sql = "SELECT username, hashPassword FROM User WHERE username='" + username+"';'";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Console.WriteLine(rdr[0] + " ------- " + rdr[1]);
+            }
+            rdr.Close();
             user = null;
+            DatabaseDisconnect(conn);
             return found;
         }
 
