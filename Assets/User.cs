@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Networking;
 
 public class User : MonoBehaviour {
+
+    private int _userCode;
 
     private Avocado _avocado;
 
@@ -149,10 +152,19 @@ public class User : MonoBehaviour {
         }
     }
 
+    public IEnumerable<int> CardCollectionIDs
+    {
+        get
+        {
+            return from card in Cards select card.CardID;
+        }
+    }
+
     // Called on create new user
-    public User(string username)
+    public User(string username, int userCode)
     {
         _username = username;
+        _userCode = userCode;
         _gold = 0;
         // Start them off with some packs to start?
         _bronzePacks = 3;
@@ -160,15 +172,16 @@ public class User : MonoBehaviour {
         _goldPacks = 1;
         // Start them off on level 1
         _storyLevel = 1;
-        // Create them a new avocado
 
+        // Create them a new avocado
         _avocado = new Avocado();
     }
 
     // Called any other time a user logs in successfully
-    public User(string username, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
+    public User(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
     {
         _username = username;
+        _userCode = userCode;
         _gold = gold;
         _bronzePacks = bronzePacks;
         _silverPacks = silverPacks;
@@ -185,6 +198,8 @@ public class User : MonoBehaviour {
     {
         _gold += goldGained;
         _avocado.GainExperiencePoints(experienceGained);
+
+        SaveManager.TrySaveBattleResults(_userCode, _avocado.Level, _avocado.ExperiencePointsToNextLevel, _gold);
     }
 
     // Returns true if pack was successfully purchased, false otherwise
@@ -195,8 +210,11 @@ public class User : MonoBehaviour {
             _bronzePacks++;
             _gold -= price;
 
+            SaveManager.TryBuyPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, _gold);
+
             return true;
         }
+
         return false;
     }
 
@@ -207,6 +225,8 @@ public class User : MonoBehaviour {
         {
             _silverPacks++;
             _gold -= price;
+
+            SaveManager.TryBuyPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, _gold);
 
             return true;
         }
@@ -221,6 +241,8 @@ public class User : MonoBehaviour {
             _goldPacks++;
             _gold -= price;
 
+            SaveManager.TryBuyPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, _gold);
+
             return true;
         }
         return false;
@@ -232,6 +254,8 @@ public class User : MonoBehaviour {
         if (Cards.Remove(card))
         {
             _gold += card.SalvageValue;
+
+            SaveManager.TrySellCard(_userCode, _gold, CardCollectionIDs);
         }
     }
 
@@ -239,6 +263,8 @@ public class User : MonoBehaviour {
     public void GoToNextLevel()
     {
         _storyLevel++;
+
+        SaveManager.TryGoToNextLevel(_userCode, _storyLevel);
     }
 
     public void EquipRightHandWeapon(Card card)
@@ -247,6 +273,8 @@ public class User : MonoBehaviour {
 
         _avocado.EquipRightHandWeapon(card);
         Cards.Remove(card);
+
+        SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
     }
 
     public void EquipLeftHandWeapon(Card card)
@@ -255,12 +283,13 @@ public class User : MonoBehaviour {
 
         _avocado.EquipLeftHandWeapon(card);
         Cards.Remove(card);
+
+        SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
     }
 
     // Used to equip cards to avocados, except for one handed weapons, removes the card from the User's card collection so they cannot equip the same card multiple times
     public void EquipCardToAvocado(Card card)
     {
-
         switch (card.CardType)
         {
             case CardType.TwoHandedWeapon:
@@ -283,6 +312,8 @@ public class User : MonoBehaviour {
                 if (_avocado.TryEquipSupportCard(card)) Cards.Remove(card);
                 break;
         }
+
+        SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
     }
 
     // Unequips the card from the avocado and returns it to the User's card collection
@@ -290,7 +321,11 @@ public class User : MonoBehaviour {
     {
         Card card = _avocado.UnequipRightHandWeapon();
 
-        if (card != null) Cards.Add(card);
+        if (card != null)
+        {
+            Cards.Add(card);
+            SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+        }
     }
 
     // Unequips the card from the avocado and returns it to the User's card collection
@@ -298,7 +333,11 @@ public class User : MonoBehaviour {
     {
         Card card = _avocado.UnequipLeftHandWeapon();
 
-        if (card != null) Cards.Add(card);
+        if (card != null)
+        {
+            Cards.Add(card);
+            SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+        }
     }
 
     // Used to unequip any card attached to an avocado except for support cards and one handed weapons. Returns the card to the User's card collection
@@ -322,7 +361,11 @@ public class User : MonoBehaviour {
                 break;
         }
 
-        if (card != null) Cards.Add(card);
+        if (card != null)
+        {
+            Cards.Add(card);
+            SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+        }
     }
 
     // Unequips the support card at the specified index from the avocado and returns it to the User's card collection
@@ -330,7 +373,11 @@ public class User : MonoBehaviour {
     {
         Card card = _avocado.UnequipSupportCard(index);
 
-        if (card != null) Cards.Add(card);
+        if (card != null)
+        {
+            Cards.Add(card);
+            SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+        }
     }
 
     public void OpenBronzePack()
@@ -340,6 +387,8 @@ public class User : MonoBehaviour {
             BronzePack pack = new BronzePack();
             Cards.AddRange(pack.Open());
             _bronzePacks--;
+
+            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
         }
     }
 
@@ -350,6 +399,8 @@ public class User : MonoBehaviour {
             SilverPack pack = new SilverPack();
             Cards.AddRange(pack.Open());
             _silverPacks--;
+
+            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
         }
     }
 
@@ -360,6 +411,8 @@ public class User : MonoBehaviour {
             GoldPack pack = new GoldPack();
             Cards.AddRange(pack.Open());
             _goldPacks--;
+
+            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
         }
     }
 
