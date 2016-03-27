@@ -4,12 +4,14 @@ using System.Collections;
 
 public class StartScreen : MonoBehaviour {
 
-    public Texture backgroundTexture;
+    public Texture2D[] backgroundTexture;
+    float framesPerSecond = 10.0f;
 
     void OnGUI()
     {
         //Display our background texture     
-        GUI.DrawTexture(new Rect(0,0,Screen.width, Screen.height), backgroundTexture);
+        int index = (int)((Time.time * framesPerSecond) % backgroundTexture.Length);
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture[index]);
 
         if (Event.current.type == EventType.KeyDown || Input.GetMouseButtonDown(0))
         {
