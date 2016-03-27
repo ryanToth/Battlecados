@@ -37,7 +37,7 @@ namespace Assets.Networking
         {
             bool found = true;
             MySqlConnection conn = DatabaseConnect();
-            string sql = "SELECT username, hashPassword FROM User WHERE username='" + username+"';'";
+            string sql = "SELECT username, hashPassword FROM User WHERE username='" + username+"'";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())

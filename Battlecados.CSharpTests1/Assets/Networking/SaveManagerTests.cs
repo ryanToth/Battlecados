@@ -18,7 +18,6 @@ namespace Assets.Networking.Tests
             string username = "testing";
             string password = "testing";
             User user = null;
-            SaveManager savemgr = new SaveManager();
 
             // Act
             bool result = SaveManager.TryLogIn(username, password, out user);
