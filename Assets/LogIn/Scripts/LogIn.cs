@@ -65,21 +65,39 @@ public class LogIn : MonoBehaviour {
         GUI.Label(new Rect(loginPasswordX, passwordLabelY, loginPasswordWidth, loginPasswordHeight), "Password:");
         passwordInput = GUI.PasswordField(new Rect(loginPasswordX, loginPasswordY, loginPasswordWidth, loginPasswordHeight), passwordInput, '*', 9);
 
-        if (GUI.Button(new Rect(loginButtonX, loginButtonY, loginButtonWidth, loginButtonHeight), "Log In") || Event.current.keyCode == KeyCode.Return)
+        if (GUI.Button(new Rect(loginButtonX, loginButtonY, loginButtonWidth, loginButtonHeight), "Log In"))
         {
-            //Take the input and try to sign in
-
-            print(userNameInput + " : " + passwordInput);
-
-            SceneManager.LoadScene(2);
+            Login();
         }
 
         if (GUI.Button(new Rect(0, createAccountButtonY, createAcountButtonWidth, loginButtonHeight), "Create Account"))
         {
-            print("Create New User Account");
-
-            SceneManager.LoadScene(3);
+            CreateAccount();
         }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Login();
+        }
+    }
+
+    void Login()
+    {
+        //Take the input and try to sign in
+
+        print(userNameInput + " : " + passwordInput);
+
+        SceneManager.LoadScene(2);
+    }
+
+    void CreateAccount()
+    {
+        print("Create New User Account");
+
+        SceneManager.LoadScene(3);
     }
 
 }

@@ -59,13 +59,25 @@ public class CreateAccount : MonoBehaviour {
         GUI.Label(new Rect(createPasswordX, passwordLabelY, createPasswordWidth, createPasswordHeight), "Password:");
         passwordInput = GUI.TextField(new Rect(createPasswordX, createPasswordY, createPasswordWidth, createPasswordHeight), passwordInput, 9);
 
-        if (GUI.Button(new Rect(createButtonX, createButtonY, createButtonWidth, createButtonHeight), "Create Account") || Event.current.keyCode == KeyCode.Return)
+        if (GUI.Button(new Rect(createButtonX, createButtonY, createButtonWidth, createButtonHeight), "Create Account"))
         {
-            //Take the input and try to create account and sign in
-
-            print(userNameInput + " : " + passwordInput);
-
-            SceneManager.LoadScene(2);
+            CreateNewAccount();
         }
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            CreateNewAccount();
+        }
+    }
+
+    void CreateNewAccount()
+    {
+        //Take the input and try to create account and sign in
+
+        print(userNameInput + " : " + passwordInput);
+
+        SceneManager.LoadScene(2);
     }
 }
