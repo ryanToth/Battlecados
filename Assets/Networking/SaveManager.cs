@@ -54,9 +54,23 @@ namespace Assets.Networking
         // Should be called from the LogIn page controller
         public static bool TryCreateNewUser(string username, string password, out int userCode)
         {
-            bool success = true;
-
+            bool success = false;
+            MySqlConnection conn = DatabaseConnect();
             userCode = 0;
+            string sql = "INSERT INTO User (username, hashPassword) VALUES ('" + username + "', '" + password + "')";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            string r_retrieve = "SELECT LAST_INSERT_ID()";
+            MySqlCommand retrieve = new MySqlCommand(r_retrieve, conn);
+            object result = retrieve.ExecuteScalar();
+            if (result != null)
+            {
+                userCode = Convert.ToInt32(result);
+                success = true;
+                Console.WriteLine(userCode);
+            }
+            DatabaseDisconnect(conn);
             return success;
         }
 

@@ -15,13 +15,30 @@ namespace Assets.Networking.Tests
         public void TryLogInTest()
         {
             // Arrange
-            string username = "testing";
+            string username = "estingt";
             string password = "testing";
-            User user = null;
+            User user;
 
             // Act
             bool result = SaveManager.TryLogIn(username, password, out user);
+
+            // Assert
             Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void TryCreateNewUserTest()
+        {
+            // Arrange
+            string username = "a";
+            string password = "b";
+            int userCode;
+
+            // Act
+            bool result = SaveManager.TryCreateNewUser(username, password, out userCode);
+
+            // Assert
+            Assert.IsTrue(result);
         }
     }
 }
