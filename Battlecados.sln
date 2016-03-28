@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battlecados.CSharp", "Battlecados.CSharp.csproj", "{69CDCEBD-C4F4-0570-A1DC-7DA5C2A1ADB0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Battlecados.CSharpTests1", "Battlecados.CSharpTests1\Battlecados.CSharpTests1.csproj", "{CBA633A5-56A0-4D91-9573-D0FA61CA1A49}"

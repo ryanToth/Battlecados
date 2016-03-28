@@ -30,7 +30,7 @@ namespace Assets.Networking.Tests
         public void TryCreateNewUserTest()
         {
             // Arrange
-            string username = "jhfjsdfgjhhgffsd";
+            string username = "jhhgffsd";
             string password = "b";
             User user;
 

@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Networking;
 
 public class StartScreen : MonoBehaviour {
 
@@ -16,8 +17,17 @@ public class StartScreen : MonoBehaviour {
 
         if (Event.current.type == EventType.KeyDown || Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
         }
+    }
+
+    void Update()
+    {
+        /*
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+        }
+        */
     }
 
     void Start()
