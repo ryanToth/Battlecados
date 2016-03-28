@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using UnityEngine;
 
 namespace Assets.Card_Data
 {
@@ -34,6 +33,31 @@ namespace Assets.Card_Data
         public Card GetRareCard()
         {
             return _rareCards.ElementAt(UnityEngine.Random.Range(0, _rareCards.Count()));
+        }
+
+        // Users will call this function to get more information about the cards they have
+        // Might be called after successful login or maybe when they first go to look at their card collection
+        // Will probably take a few seconds to run to completion
+        public List<Card> GetCardsInfo(IEnumerable<int> cards)
+        {
+            List<Card> cardsList = new List<Card>();
+
+            cardsList.AddRange(from databaseCards in _commonCards
+                               join cardIDs in cards 
+                               on databaseCards.CardID equals cardIDs
+                               select databaseCards);
+
+            cardsList.AddRange(from databaseCards in _uncommonCards
+                               join cardIDs in cards
+                               on databaseCards.CardID equals cardIDs
+                               select databaseCards);
+
+            cardsList.AddRange(from databaseCards in _rareCards
+                               join cardIDs in cards
+                               on databaseCards.CardID equals cardIDs
+                               select databaseCards);
+
+            return cardsList;
         }
 
         private IEnumerable<Card> ReadXML(string xmlFile, CardRarity cardRarity)
