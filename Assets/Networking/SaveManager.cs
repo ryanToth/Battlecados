@@ -12,7 +12,7 @@ namespace Assets.Networking
     {
         private static MySqlConnection DatabaseConnect()
         {
-            string connStr = "server=userdb.cvk754rpwemy.us-east-1.rds.amazonaws.com;port=3306;user=battlecado;password=milehigh;database=User;";
+            string connStr = "server=newuserdb.cvk754rpwemy.us-east-1.rds.amazonaws.com;port=3306;user=battlecado;password=milehigh;database=User;";
             MySqlConnection conn = new MySqlConnection(connStr);
 
             try
@@ -37,7 +37,7 @@ namespace Assets.Networking
         {
             bool found = true;
             MySqlConnection conn = DatabaseConnect();
-            string sql = "SELECT username, hashPassword FROM User WHERE username='" + username+"'";
+            string sql = "SELECT username, hashPassword FROM User WHERE username='" + username +"'";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -52,25 +52,54 @@ namespace Assets.Networking
 
         // Attempts to create a new user in the database, returns true if no user by the given name exists, false otherwise, sends the user back their user code
         // Should be called from the LogIn page controller
-        public static bool TryCreateNewUser(string username, string password, out int userCode)
+        public static bool TryCreateNewUser(string username, string password, out User user)
         {
             bool success = false;
             MySqlConnection conn = DatabaseConnect();
-            userCode = 0;
+            user = null;
+            int userCode = 0;
+            int bronzePacks = 0;
+            int silverPacks = 0;
+            int goldPacks = 0;
+            int storyLevel = 0;
+            int gold = 0;
+
             string sql = "INSERT INTO User (username, hashPassword) VALUES ('" + username + "', '" + password + "')";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             string r_retrieve = "SELECT LAST_INSERT_ID()";
             MySqlCommand retrieve = new MySqlCommand(r_retrieve, conn);
-            object result = retrieve.ExecuteScalar();
+            var result = retrieve.ExecuteScalar();
             if (result != null)
             {
                 userCode = Convert.ToInt32(result);
                 success = true;
-                Console.WriteLine(userCode);
+                Console.WriteLine("User code: " + userCode);
             }
+            string usersql = "SELECT * FROM User WHERE userCode = " + userCode;
+            MySqlCommand getUser = new MySqlCommand(usersql, conn);
+            MySqlDataReader rdr = getUser.ExecuteReader();
+            while (rdr.Read())
+            {
+                bronzePacks = Convert.ToInt32(rdr[3]);
+                silverPacks = Convert.ToInt32(rdr[4]);
+                goldPacks = Convert.ToInt32(rdr[5]);
+                storyLevel = Convert.ToInt32(rdr[6]);
+                gold = Convert.ToInt32(rdr[7]);
+            }
+            rdr.Close();
+
+            // Creating user's avocado
+            string avocadosql = "INSERT INTO Avocado (avocadoID) VALUES (" + userCode + ")";
+            MySqlCommand newAvocado = new MySqlCommand(avocadosql, conn);
+            newAvocado.ExecuteNonQuery();
+
+            // Creating user
+            user = new User(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado());
+
             DatabaseDisconnect(conn);
+
             return success;
         }
 

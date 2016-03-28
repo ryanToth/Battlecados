@@ -30,12 +30,12 @@ namespace Assets.Networking.Tests
         public void TryCreateNewUserTest()
         {
             // Arrange
-            string username = "a";
+            string username = "jhfjsdfgjhhgffsd";
             string password = "b";
-            int userCode;
+            User user;
 
             // Act
-            bool result = SaveManager.TryCreateNewUser(username, password, out userCode);
+            bool result = SaveManager.TryCreateNewUser(username, password, out user);
 
             // Assert
             Assert.IsTrue(result);
