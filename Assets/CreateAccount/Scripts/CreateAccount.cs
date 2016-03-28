@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Assets.Networking;
 
 public class CreateAccount : MonoBehaviour {
 
@@ -76,8 +77,13 @@ public class CreateAccount : MonoBehaviour {
     {
         //Take the input and try to create account and sign in
 
-        print(userNameInput + " : " + passwordInput);
-
-        SceneManager.LoadScene(2);
+        if (userNameInput != "" && passwordInput != "")
+        {
+            User user;
+            if (SaveManager.TryCreateNewUser(userNameInput, passwordInput, out user))
+            {
+                SceneManager.LoadScene(2);
+            }
+        }
     }
 }
