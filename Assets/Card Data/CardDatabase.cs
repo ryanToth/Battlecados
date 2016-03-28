@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using UnityEngine;
 
 namespace Assets.Card_Data
 {
@@ -13,28 +14,26 @@ namespace Assets.Card_Data
 
         private IEnumerable<Card> _rareCards;
 
-        private Random _rnd = new Random();
-
         public CardDatabase()
         {
-            _commonCards = ReadXML("common_cards.xml", CardRarity.Common);
-            _uncommonCards = ReadXML("uncommon_cards.xml", CardRarity.Uncommon);
-            _rareCards = ReadXML("rare_cards.xml", CardRarity.Rare);
+            _commonCards = ReadXML("CardXML/common_cards.xml", CardRarity.Common);
+            _uncommonCards = ReadXML("CardXML/uncommon_cards.xml", CardRarity.Uncommon);
+            _rareCards = ReadXML("CardXML/rare_cards.xml", CardRarity.Rare);
         }
 
         public Card GetCommonCard()
         {
-            return _commonCards.ElementAt(_rnd.Next(0, _commonCards.Count()-1));
+            return _commonCards.ElementAt(UnityEngine.Random.Range(0, _commonCards.Count()));
         }
 
         public Card GetUncommonCard()
         {
-            return _uncommonCards.ElementAt(_rnd.Next(0, _uncommonCards.Count() - 1));
+            return _uncommonCards.ElementAt(UnityEngine.Random.Range(0, _uncommonCards.Count()));
         }
 
         public Card GetRareCard()
         {
-            return _rareCards.ElementAt(_rnd.Next(0, _rareCards.Count() - 1));
+            return _rareCards.ElementAt(UnityEngine.Random.Range(0, _rareCards.Count()));
         }
 
         private IEnumerable<Card> ReadXML(string xmlFile, CardRarity cardRarity)
@@ -59,8 +58,10 @@ namespace Assets.Card_Data
                 int health = Convert.ToInt32(card.SelectSingleNode("health").InnerText);
                 int speed = Convert.ToInt32(card.SelectSingleNode("speed").InnerText);
 
-                yield return new Card(name, flavourText, cardID, salvageValue, (CardType)cardType, cardRarity,
+                Card newCard = new Card(name, flavourText, cardID, salvageValue, (CardType)cardType, cardRarity,
                     new CardEffect(attack, defence, health, speed));
+
+                yield return newCard;
             }
         }
 
