@@ -22,6 +22,21 @@ namespace Assets.Card_Data
             _rareCards = ReadXML("rare_cards.xml", CardRarity.Rare);
         }
 
+        public Card GetCommonCard()
+        {
+            return _commonCards.ElementAt(_rnd.Next(0, _commonCards.Count()-1));
+        }
+
+        public Card GetUncommonCard()
+        {
+            return _uncommonCards.ElementAt(_rnd.Next(0, _uncommonCards.Count() - 1));
+        }
+
+        public Card GetRareCard()
+        {
+            return _rareCards.ElementAt(_rnd.Next(0, _rareCards.Count() - 1));
+        }
+
         private IEnumerable<Card> ReadXML(string xmlFile, CardRarity cardRarity)
         {
             XmlDocument document = new XmlDocument();
@@ -47,21 +62,6 @@ namespace Assets.Card_Data
                 yield return new Card(name, flavourText, cardID, salvageValue, (CardType)cardType, cardRarity,
                     new CardEffect(attack, defence, health, speed));
             }
-        }
-
-        public Card GetCommonCard()
-        {
-            return _commonCards.ElementAt(_rnd.Next(0, _commonCards.Count()-1));
-        }
-
-        public Card GetUncommonCard()
-        {
-            return _uncommonCards.ElementAt(_rnd.Next(0, _uncommonCards.Count() - 1));
-        }
-
-        public Card GetRareCard()
-        {
-            return _rareCards.ElementAt(_rnd.Next(0, _rareCards.Count() - 1));
         }
 
     }
