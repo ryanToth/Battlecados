@@ -2,28 +2,104 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MySql;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace Assets.Networking
 {
-    class SaveManager
+    public class SaveManager
     {
+        private static MySqlConnection DatabaseConnect()
+        {
+            string connStr = "server=newuserdb.cvk754rpwemy.us-east-1.rds.amazonaws.com;port=3306;user=battlecado;password=milehigh;database=User;";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return conn;
+        }
+        private static void DatabaseDisconnect(MySqlConnection conn)
+        {
+            conn.Close();
+            Console.WriteLine("Database connection closed");
+        }
         // Attempts to get the user's info from the database, returns true if user was found, false otherwise, sends the user back all their info
         // Should be called from the LogIn page controller
         public static bool TryLogIn(string username, string password, out User user)
         {
             bool found = true;
-
+            MySqlConnection conn = DatabaseConnect();
+            string sql = "SELECT username, hashPassword FROM User WHERE username='" + username +"'";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Console.WriteLine(rdr[0] + " ------- " + rdr[1]);
+            }
+            rdr.Close();
             user = null;
+            DatabaseDisconnect(conn);
             return found;
         }
 
         // Attempts to create a new user in the database, returns true if no user by the given name exists, false otherwise, sends the user back their user code
         // Should be called from the LogIn page controller
-        public static bool TryCreateNewUser(string username, string password, out int userCode)
+        public static bool TryCreateNewUser(string username, string password, out User user)
         {
-            bool success = true;
+            bool success = false;
+            MySqlConnection conn = DatabaseConnect();
+            user = null;
+            int userCode = 0;
+            int bronzePacks = 0;
+            int silverPacks = 0;
+            int goldPacks = 0;
+            int storyLevel = 0;
+            int gold = 0;
 
-            userCode = 0;
+            string sql = "INSERT INTO User (username, hashPassword) VALUES ('" + username + "', '" + password + "')";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            string r_retrieve = "SELECT LAST_INSERT_ID()";
+            MySqlCommand retrieve = new MySqlCommand(r_retrieve, conn);
+            var result = retrieve.ExecuteScalar();
+            if (result != null)
+            {
+                userCode = Convert.ToInt32(result);
+                success = true;
+                Console.WriteLine("User code: " + userCode);
+            }
+            string usersql = "SELECT * FROM User WHERE userCode = " + userCode;
+            MySqlCommand getUser = new MySqlCommand(usersql, conn);
+            MySqlDataReader rdr = getUser.ExecuteReader();
+            while (rdr.Read())
+            {
+                bronzePacks = Convert.ToInt32(rdr[3]);
+                silverPacks = Convert.ToInt32(rdr[4]);
+                goldPacks = Convert.ToInt32(rdr[5]);
+                storyLevel = Convert.ToInt32(rdr[6]);
+                gold = Convert.ToInt32(rdr[7]);
+            }
+            rdr.Close();
+
+            // Creating user's avocado
+            string avocadosql = "INSERT INTO Avocado (avocadoID) VALUES (" + userCode + ")";
+            MySqlCommand newAvocado = new MySqlCommand(avocadosql, conn);
+            newAvocado.ExecuteNonQuery();
+
+            // Creating user
+            user = new User(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado());
+
+            DatabaseDisconnect(conn);
+
             return success;
         }
 
