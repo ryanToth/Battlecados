@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <cards>
   <card>
-    <id>0</id>
+    <id>1</id>
     <cardType>0</cardType>
     <name>Cilantro's Sword</name>
     <flavourText>A one handed sword</flavourText>
@@ -13,7 +13,7 @@
   </card>
   
   <card>
-    <id>1</id>
+    <id>2</id>
     <cardType>2</cardType>
     <name>Crown of the Ancients</name>
     <flavourText>A bucket</flavourText>
@@ -25,7 +25,7 @@
   </card>
 
   <card>
-    <id>2</id>
+    <id>3</id>
     <cardType>5</cardType>
     <name>Rusty Bottlecap</name>
     <flavourText>A rusty bottlecap</flavourText>
