@@ -31,6 +31,8 @@ namespace Assets.Networking
             conn.Close();
             Console.WriteLine("Database connection closed");
         }
+        
+        // Done
         // Attempts to get the user's info from the database, returns true if user was found, false otherwise, sends the user back all their info
         // Should be called from the LogIn page controller
         public static bool TryLogIn(string username, string password, out User user)
@@ -96,6 +98,7 @@ namespace Assets.Networking
             return found;
         }
 
+        // Done
         // Attempts to create a new user in the database, returns true if no user by the given name exists, false otherwise, sends the user back their user code
         // Should be called from the LogIn page controller
         public static bool TryCreateNewUser(string username, string password, out User user)
@@ -149,6 +152,7 @@ namespace Assets.Networking
             return success;
         }
 
+        // Done
         // Attempts to save user info after an online battle (win or lose), returns true if save was successful, false otherwise
         public static bool TrySaveBattleResults(int userCode, int avocadoLevel, int avocadoExperiencePoints, int gold)
         {
@@ -171,7 +175,8 @@ namespace Assets.Networking
             }
             return success;
         }
-
+        
+        // Done
         // Attempts to save user info after a story mode battle win, returns true if save was successful, false otherwise
         public static bool TryGoToNextLevel(int userCode, int storyLevel)
         {
@@ -192,10 +197,25 @@ namespace Assets.Networking
             return success;
         }
 
+        // Done
         // Attempts to save user info after a pack is purchased, returns true if save was successful, false otherwise
         public static bool TryBuyPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, int gold)
         {
-            bool success = true;
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string sql = "UPDATE User SET bronzePacks=" + numberOfBronzePacks+", silverPacks=" + numberOfSilverPacks
+                    + ", goldPacks=" + numberOfGoldPacks + ", gold=" + gold + " WHERE userCode=" + userCode;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
 
             return success;
         }
