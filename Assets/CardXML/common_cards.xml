@@ -51,7 +51,7 @@
   <card>
     <id>5</id>
     <cardType>1</cardType>
-    <name>Home Run Bat</name>
+    <name>Homerun Bat</name>
     <flavourText>Kerschwing</flavourText>
     <attack>10</attack>
     <defence>0</defence>
