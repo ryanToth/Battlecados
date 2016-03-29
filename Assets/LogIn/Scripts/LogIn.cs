@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Assets.Networking;
 
 public class LogIn : MonoBehaviour {
 
@@ -88,9 +89,14 @@ public class LogIn : MonoBehaviour {
     {
         //Take the input and try to sign in
 
-        print(userNameInput + " : " + passwordInput);
-
-        SceneManager.LoadScene(2);
+        if (userNameInput != "" && passwordInput != "")
+        {
+            User user;
+            if (SaveManager.TryLogIn(userNameInput, passwordInput, out user))
+            {
+                SceneManager.LoadScene(2);
+            }
+        }
     }
 
     void CreateAccount()

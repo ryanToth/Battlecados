@@ -35,18 +35,64 @@ namespace Assets.Networking
         // Should be called from the LogIn page controller
         public static bool TryLogIn(string username, string password, out User user)
         {
-            bool found = true;
+            bool found = false;
+            user = null;
+
+            // User database work
+            int userCode = 0;
+            int bronzePacks = 0;
+            int silverPacks = 0;
+            int goldPacks = 0;
+            int storyLevel = 0;
+            int gold = 0;
             MySqlConnection conn = DatabaseConnect();
-            string sql = "SELECT username, hashPassword FROM User WHERE username='" + username +"'";
+            string sql = "SELECT * FROM User WHERE username='" + username +"'AND hashPassword = '" + password + "'";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                Console.WriteLine(rdr[0] + " ------- " + rdr[1]);
+                found = true;
+                userCode = Convert.ToInt32(rdr[0]);
+                bronzePacks = Convert.ToInt32(rdr[3]);
+                silverPacks = Convert.ToInt32(rdr[4]);
+                goldPacks = Convert.ToInt32(rdr[5]);
+                storyLevel = Convert.ToInt32(rdr[6]);
+                gold = Convert.ToInt32(rdr[7]);
             }
             rdr.Close();
-            user = null;
+
+            // Avocado database work
+            int level = 0;
+            int experiencePoints = 0;
+            int rightHandedWeapon = 0;
+            int leftHandedWeapon = 0;
+            int twoHandedWeapon = 0;
+            int headArmor = 0;
+            int chestArmor = 0;
+            int supportCards = 0;
+            string cado_sql = "SELECT * FROM Avocado WHERE avocadoID = " + userCode;
+            MySqlCommand cado_cmd = new MySqlCommand(cado_sql, conn);
+            MySqlDataReader cado_rdr = cado_cmd.ExecuteReader();
+            while (cado_rdr.Read())
+            {
+                level = Convert.ToInt32(cado_rdr[1]);
+                experiencePoints = Convert.ToInt32(cado_rdr[2]);
+                rightHandedWeapon = Convert.ToInt32(cado_rdr[3]);
+                leftHandedWeapon = Convert.ToInt32(cado_rdr[4]);
+                twoHandedWeapon = Convert.ToInt32(cado_rdr[5]);
+                headArmor = Convert.ToInt32(cado_rdr[6]);
+                chestArmor = Convert.ToInt32(cado_rdr[7]);
+                supportCards = Convert.ToInt32(cado_rdr[8]);
+            }
+            cado_rdr.Close();
             DatabaseDisconnect(conn);
+            //public Avocado(int level, int experiencePoints, Card rightHandedWeapon, Card leftHandedWeapon, Card twoHandedWeapon,
+                //Card headArmor, Card chestArmor, List<Card> supportCards)
+            Avocado cado = new Avocado(level, experiencePoints, null, null, null, null, null, null);
+
+            //public User(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
+            user = new User(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, cado);
+
             return found;
         }
 
