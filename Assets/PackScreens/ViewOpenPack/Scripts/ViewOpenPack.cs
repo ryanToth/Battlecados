@@ -75,7 +75,7 @@ public class ViewOpenPack : MonoBehaviour {
             statNum++;
         }
 
-        GUI.Label(new Rect(statX, statY + statNum * statHeight, statWidth, statHeight), "Value: " + cards[currentIndex].SalvageValue.ToString(), statStyle);
+        GUI.Label(new Rect(statX, statY + 4 * statHeight, statWidth, statHeight), "Salvage Value: " + cards[currentIndex].SalvageValue.ToString(), statStyle);
 
         if (currentIndex != 0)
         {
@@ -139,16 +139,13 @@ public class ViewOpenPack : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        User user = GetCurrentInfo.User;
 
-        cards = new BronzePack().Open();
-
-        /*
         if (GetCurrentInfo.TypeOfPackToOpen.packType == 1)
-            cards = new BronzePack().Open();
+            cards = user.OpenBronzePack();
         else if (GetCurrentInfo.TypeOfPackToOpen.packType == 2)
-            cards = new SilverPack().Open();
+            cards = user.OpenSilverPack();
         else
-            cards = new GoldPack().Open();
-    */
+            cards = user.OpenGoldPack();
     }
 }

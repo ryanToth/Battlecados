@@ -403,40 +403,52 @@ public class User : MonoBehaviour {
         }
     }
 
-    public void OpenBronzePack()
+    public List<Card> OpenBronzePack()
     {
         if (_bronzePacks > 0)
         {
             BronzePack pack = new BronzePack();
-            Cards.AddRange(pack.Open());
+            List<Card> newCards = pack.Open();
+            Cards.AddRange(newCards);
             _bronzePacks--;
 
             SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+
+            return newCards;
         }
+        return null;
     }
 
-    public void OpenSilverPack()
+    public List<Card> OpenSilverPack()
     {
         if (_silverPacks > 0)
         {
             SilverPack pack = new SilverPack();
-            Cards.AddRange(pack.Open());
+            List<Card> newCards = pack.Open();
+            Cards.AddRange(newCards);
             _silverPacks--;
 
             SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+
+            return newCards;
         }
+        return null;
     }
 
-    public void OpenGoldPack()
+    public List<Card> OpenGoldPack()
     {
         if (_goldPacks > 0)
         {
             GoldPack pack = new GoldPack();
-            Cards.AddRange(pack.Open());
+            List<Card> newCards = pack.Open();
+            Cards.AddRange(newCards);
             _goldPacks--;
 
             SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+
+            return newCards;
         }
+        return null;
     }
 
     void Awake()

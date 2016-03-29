@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Card : MonoBehaviour {
+public class Card {
 
     private string _name;
 
@@ -111,16 +111,6 @@ public class Card : MonoBehaviour {
             return _cardEffect.Speed;
         }
     }
-
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
 
 public enum CardType

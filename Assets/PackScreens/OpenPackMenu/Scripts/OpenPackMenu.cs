@@ -52,11 +52,8 @@ public class OpenPackMenu : MonoBehaviour
                 // Need to find a way to tell the next scene that I opened a Bronze pack
                 TypeOfPackBought type = GetCurrentInfo.TypeOfPackToOpen;
                 type.packType = 1;
-                SceneManager.LoadScene(6);
-                Destroy(this);
-                user.OpenBronzePack();
-                UpdateUpdateableFields();
                 print("Open Bronze Pack");
+                SceneManager.LoadScene(6);
             }
         }
         else
@@ -75,11 +72,8 @@ public class OpenPackMenu : MonoBehaviour
                 // Need to find a way to tell the next scene that I opened a Silver pack
                 TypeOfPackBought type = GetCurrentInfo.TypeOfPackToOpen;
                 type.packType = 2;
-                SceneManager.LoadScene(6);
-                Destroy(this);
-                user.OpenSilverPack();
-                UpdateUpdateableFields();
                 print("Open Silver Pack");
+                SceneManager.LoadScene(6);
             }
         }
         else
@@ -98,11 +92,8 @@ public class OpenPackMenu : MonoBehaviour
                 // Need to find a way to tell the next scene that I opened a Gold pack
                 TypeOfPackBought type = GetCurrentInfo.TypeOfPackToOpen;
                 type.packType = 3;
-                SceneManager.LoadScene(6);
-                Destroy(this);
-                user.OpenGoldPack();
-                UpdateUpdateableFields();
                 print("Open Gold Pack");
+                SceneManager.LoadScene(6);
             }
         }
         else
@@ -119,7 +110,6 @@ public class OpenPackMenu : MonoBehaviour
             print("Back");
             //Go to Main Menu
             SceneManager.LoadScene(2);
-            Destroy(this);
         }
     }
 

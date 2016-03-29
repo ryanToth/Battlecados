@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CardEffect : MonoBehaviour {
+public class CardEffect {
 
     private int _attack;
 
@@ -51,14 +51,4 @@ public class CardEffect : MonoBehaviour {
         _health = health;
         _speed = speed;
     }
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
