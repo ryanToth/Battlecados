@@ -26,6 +26,7 @@ namespace Assets.Networking
             }
             return conn;
         }
+
         private static void DatabaseDisconnect(MySqlConnection conn)
         {
             conn.Close();

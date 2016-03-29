@@ -23,5 +23,13 @@
     <health>4</health>
     <salvageValue>45</salvageValue>
   </card>
+
+  <card>
+    <id>2</id>
+    <cardType>5</cardType>
+    <name>Rusty Bottlecap</name>
+    <flavourText>A rusty bottlecap</flavourText>
+    <salvageValue>1</salvageValue>
+  </card>
 </cards>
 
