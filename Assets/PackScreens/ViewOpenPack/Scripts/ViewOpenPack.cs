@@ -83,7 +83,12 @@ public class ViewOpenPack : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        cards = new BronzePack().Open();
+        if (GetCurrentInfo.TypeOfPackToOpen.packType == 1)
+            cards = new BronzePack().Open();
+        else if (GetCurrentInfo.TypeOfPackToOpen.packType == 2)
+            cards = new SilverPack().Open();
+        else
+            cards = new GoldPack().Open();
 
-	}
+    }
 }

@@ -33,8 +33,9 @@ public class OpenPackMenu : MonoBehaviour
     public int numSilverPacks = 0;
     public int numBronzePacks = 1;
 
-    // Temporary addition
-    int userGold;
+    public int userGold;
+
+    public User user;
 
     void OnGUI()
     {
@@ -49,8 +50,13 @@ public class OpenPackMenu : MonoBehaviour
             // Bronze Pack button
             if (GUI.Button(new Rect(packX, bronzeY, packWidth, packHeight), "", bronzeStyle))
             {
+                // Need to find a way to tell the next scene that I opened a Bronze pack
+                TypeOfPackBought type = GetCurrentInfo.TypeOfPackToOpen;
+                type.packType = 1;
                 SceneManager.LoadScene(6);
-                numBronzePacks--;
+                Destroy(this);
+                user.OpenBronzePack();
+                UpdateUpdateableFields();
                 print("Open Bronze Pack");
             }
         }
@@ -67,8 +73,13 @@ public class OpenPackMenu : MonoBehaviour
             // Silver Pack button
             if (GUI.Button(new Rect(packX, silverY, packWidth, packHeight), "", silverStyle))
             {
+                // Need to find a way to tell the next scene that I opened a Silver pack
+                TypeOfPackBought type = GetCurrentInfo.TypeOfPackToOpen;
+                type.packType = 2;
                 SceneManager.LoadScene(6);
-                numSilverPacks--;
+                Destroy(this);
+                user.OpenSilverPack();
+                UpdateUpdateableFields();
                 print("Open Silver Pack");
             }
         }
@@ -85,8 +96,13 @@ public class OpenPackMenu : MonoBehaviour
             // Gold Pack button
             if (GUI.Button(new Rect(packX, goldY, packWidth, packHeight), "", goldStyle))
             {
+                // Need to find a way to tell the next scene that I opened a Gold pack
+                TypeOfPackBought type = GetCurrentInfo.TypeOfPackToOpen;
+                type.packType = 3;
                 SceneManager.LoadScene(6);
-                numGoldPacks--;
+                Destroy(this);
+                user.OpenGoldPack();
+                UpdateUpdateableFields();
                 print("Open Gold Pack");
             }
         }
@@ -104,18 +120,21 @@ public class OpenPackMenu : MonoBehaviour
             print("Back");
             //Go to Main Menu
             SceneManager.LoadScene(2);
+            Destroy(this);
         }
     }
 
-    void Start()
+    public void Start()
     {
-        //Get these from the User class later
-        numBronzePacks = 1;
-        numSilverPacks = 0;
-        numGoldPacks = 1;
+        user = GetCurrentInfo.User;
+        UpdateUpdateableFields();
+    }
 
-        // Temporary until we link this scene to the rest and pass along the User object
-        userGold = 1200;
+    void UpdateUpdateableFields()
+    {
+        numBronzePacks = user.BronzePacks;
+        numSilverPacks = user.SilverPacks;
+        numGoldPacks = user.GoldPacks;
     }
 
     void Update()

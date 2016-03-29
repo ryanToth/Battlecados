@@ -30,7 +30,6 @@ public class MainMenu : MonoBehaviour {
     public int pointerFingerIndex = 0;
 
     public GUIStyle pointerFingerStyle;
-
     void OnGUI()
     {
         storyButtonY = Screen.height * 0.43168f;

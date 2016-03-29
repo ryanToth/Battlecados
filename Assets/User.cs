@@ -8,9 +8,17 @@ public class User : MonoBehaviour {
 
     private int _userCode;
 
+    public int UserCode
+    {
+        get
+        {
+            return _userCode;
+        }
+    }
+
     private Avocado _avocado;
 
-    public Avocado Acocado
+    public Avocado Avocado
     {
         get
         {
@@ -189,8 +197,21 @@ public class User : MonoBehaviour {
         _storyLevel = storyLevel;
 
         _avocado = avocado;
-
         // Should have some code here to initialize the User's Cards list
+    }
+
+    //Copy constructor
+    public void CopyUser(User user)
+    {
+        _username = user.Username;
+        _userCode = user.UserCode;
+        _gold = user.Gold;
+        _bronzePacks = user.BronzePacks;
+        _silverPacks = user.SilverPacks;
+        _goldPacks = user.GoldPacks;
+        _storyLevel = user.StoryLevel;
+
+        _avocado = user.Avocado;
     }
 
     // After every battle, this function is called to reward the player
@@ -414,6 +435,11 @@ public class User : MonoBehaviour {
 
             SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
         }
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
 
     // Use this for initialization
