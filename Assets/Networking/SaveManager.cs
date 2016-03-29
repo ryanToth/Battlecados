@@ -150,10 +150,25 @@ namespace Assets.Networking
         }
 
         // Attempts to save user info after an online battle (win or lose), returns true if save was successful, false otherwise
-        public static bool TrySaveBattleResults(int userCode, int avocadoLevel, int avocadoExperienceToNextLevel, int gold)
+        public static bool TrySaveBattleResults(int userCode, int avocadoLevel, int avocadoExperiencePoints, int gold)
         {
-            bool success = true;
-
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string sql = "UPDATE User SET gold=" + gold + " WHERE userCode=" + userCode;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                string cado_sql = "UPDATE Avocado SET level=" + avocadoLevel + ", experiencePoints=" + avocadoExperiencePoints + " WHERE avocadoID = " + userCode;
+                MySqlCommand cado_cmd = new MySqlCommand(cado_sql, conn);
+                cado_cmd.ExecuteNonQuery();
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
             return success;
         }
 

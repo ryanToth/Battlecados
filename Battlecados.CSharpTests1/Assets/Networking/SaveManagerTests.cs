@@ -54,5 +54,21 @@ namespace Assets.Networking.Tests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod()]
+        public void TrySaveBattleResultsTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int avocadoLevel = 45;
+            int avocadoExperiencePoints = 80;
+            int gold = 900;
+
+            // Act
+            bool result = SaveManager.TrySaveBattleResults(userCode, avocadoLevel, avocadoExperiencePoints, gold);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }
