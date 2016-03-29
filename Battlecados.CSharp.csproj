@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.3.4f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -76,6 +78,7 @@
     <Compile Include="Assets\Card.cs" />
     <Compile Include="Assets\CardEffect.cs" />
     <Compile Include="Assets\CreateAccount\Scripts\CreateAccount.cs" />
+    <Compile Include="Assets\GetCurrentInfo.cs" />
     <Compile Include="Assets\GoldPack.cs" />
     <Compile Include="Assets\LogIn\Scripts\LogIn.cs" />
     <Compile Include="Assets\MainMenu\Scripts\MainMenu.cs" />
@@ -86,6 +89,7 @@
     <Compile Include="Assets\PackScreens\ViewOpenPack\Scripts\ViewOpenPack.cs" />
     <Compile Include="Assets\SilverPack.cs" />
     <Compile Include="Assets\StartScreen\Script\StartScreen.cs" />
+    <Compile Include="Assets\TypeOfPackBought.cs" />
     <Compile Include="Assets\User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

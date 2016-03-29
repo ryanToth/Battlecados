@@ -82,7 +82,10 @@ public class CreateAccount : MonoBehaviour {
             User user;
             if (SaveManager.TryCreateNewUser(userNameInput, passwordInput, out user))
             {
+                User thing = this.GetComponent<User>();
+                thing.CopyUser(user);
                 SceneManager.LoadScene(2);
+                Destroy(this);
             }
         }
     }

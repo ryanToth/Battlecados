@@ -41,6 +41,8 @@ public class BuyPack : MonoBehaviour {
     // Temporary addition
     int userGold;
 
+    public User user;
+
     void OnGUI()
     {
 
@@ -52,7 +54,8 @@ public class BuyPack : MonoBehaviour {
         // Bronze Pack button
         if (GUI.Button(new Rect(packX, bronzeY, packWidth, packHeight), "", bronzeStyle))
         {
-            userGold -= bronzePrice;
+            user.BuyBronzePack(bronzePrice);
+            userGold = user.Gold;
             print("Purchased Bronze Pack");
         }
 
@@ -62,7 +65,8 @@ public class BuyPack : MonoBehaviour {
         // Silver Pack button
         if (GUI.Button(new Rect(packX, silverY, packWidth, packHeight), "", silverStyle))
         {
-            userGold -= silverPrice;
+            user.BuySilverPack(silverPrice);
+            userGold = user.Gold;
             print("Purchased Silver Pack");
         }
 
@@ -72,7 +76,8 @@ public class BuyPack : MonoBehaviour {
         // Gold Pack button
         if (GUI.Button(new Rect(packX, goldY, packWidth, packHeight), "", goldStyle))
         {
-            userGold -= goldPrice;
+            user.BuyGoldPack(goldPrice);
+            userGold = user.Gold;
             print("Purchased Gold Pack");
         }
 
@@ -98,8 +103,9 @@ public class BuyPack : MonoBehaviour {
         bronzePrice = new BronzePack().Cost;
         userGoldText = "Gold: ";
 
-        // Temporary until we link this scene to the rest and pass along the User object
-        userGold = 1200;
+        user = GetCurrentInfo.User;
+
+        userGold = user.Gold;
     }
 
     void SetRelativeComponentSizes()
