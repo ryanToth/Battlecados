@@ -40,5 +40,52 @@ namespace Assets.Networking.Tests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod()]
+        public void TryGoToNextLevelTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int storyLevel = 3;
+
+            // Act
+            bool result = SaveManager.TryGoToNextLevel(userCode, storyLevel);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod()]
+        public void TrySaveBattleResultsTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int avocadoLevel = 45;
+            int avocadoExperiencePoints = 80;
+            int gold = 900;
+
+            // Act
+            bool result = SaveManager.TrySaveBattleResults(userCode, avocadoLevel, avocadoExperiencePoints, gold);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod()]
+        public void TryBuyPackTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int numberOfBronzePacks = 5;
+            int numberOfSilverPacks = 3;
+            int numberOfGoldPacks = 2;
+            int gold = 300;
+
+            // Act
+            bool result = SaveManager.TryBuyPack(userCode, numberOfBronzePacks, numberOfSilverPacks, numberOfGoldPacks, gold);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }
