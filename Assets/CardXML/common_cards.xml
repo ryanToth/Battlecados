@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cards>
+  <card>
+    <id>0</id>
+    <cardType>0</cardType>
+    <name>Cilantro's Sword</name>
+    <flavourText>A one handed sword</flavourText>
+    <attack>10</attack>
+    <defence>1</defence>
+    <speed>3</speed>
+    <health>1</health>
+    <salvageValue>50</salvageValue>
+  </card>
+  
+  <card>
+    <id>1</id>
+    <cardType>2</cardType>
+    <name>Crown of the Ancients</name>
+    <flavourText>A bucket</flavourText>
+    <attack>0</attack>
+    <defence>10</defence>
+    <speed>-1</speed>
+    <health>4</health>
+    <salvageValue>45</salvageValue>
+  </card>
+
+  <card>
+    <id>2</id>
+    <cardType>5</cardType>
+    <name>Rusty Bottlecap</name>
+    <flavourText>A rusty bottlecap</flavourText>
+    <attack>0</attack>
+    <defence>0</defence>
+    <speed>0</speed>
+    <health>0</health>
+    <salvageValue>1</salvageValue>
+  </card>
+</cards>
+
