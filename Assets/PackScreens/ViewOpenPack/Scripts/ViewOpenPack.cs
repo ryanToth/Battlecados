@@ -22,6 +22,14 @@ public class ViewOpenPack : MonoBehaviour {
     public float cardNameX;
     public float cardNameWidth;
     public float cardNameHeight;
+    public GUIStyle cardNameStyle;
+
+    public float statX;
+    public float statY;
+    public float statWidth;
+    public float statHeight;
+    public int statNum = 0;
+    public GUIStyle statStyle;
 
     public float buttonY;
     public float nextButtonX;
@@ -38,6 +46,36 @@ public class ViewOpenPack : MonoBehaviour {
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 
         GUI.DrawTexture(new Rect(cardX, cardY, cardWidth, cardHeight), cardTypeImages[(int)cards[currentIndex].CardType]);
+
+        GUI.Label(new Rect(cardNameX, cardNameY, cardNameWidth, cardNameHeight), cards[currentIndex].Name, cardNameStyle);
+
+        statNum = 0;
+
+        if (cards[currentIndex].AttackEffect != 0)
+        {
+            GUI.Label(new Rect(statX, statY + statNum*statHeight, statWidth, statHeight), "Attack: " + cards[currentIndex].AttackEffect.ToString(), statStyle);
+            statNum++;
+        }
+
+        if (cards[currentIndex].DefenceEffect != 0)
+        {
+            GUI.Label(new Rect(statX, statY + statNum * statHeight, statWidth, statHeight), "Defence: " + cards[currentIndex].DefenceEffect.ToString(), statStyle);
+            statNum++;
+        }
+
+        if (cards[currentIndex].SpeedEffect != 0)
+        {
+            GUI.Label(new Rect(statX, statY + statNum * statHeight, statWidth, statHeight), "Speed: " + cards[currentIndex].SpeedEffect.ToString(), statStyle);
+            statNum++;
+        }
+
+        if (cards[currentIndex].HealthEffect != 0)
+        {
+            GUI.Label(new Rect(statX, statY + statNum * statHeight, statWidth, statHeight), "Health: " + cards[currentIndex].HealthEffect.ToString(), statStyle);
+            statNum++;
+        }
+
+        GUI.Label(new Rect(statX, statY + statNum * statHeight, statWidth, statHeight), "Value: " + cards[currentIndex].SalvageValue.ToString(), statStyle);
 
         if (currentIndex != 0)
         {
@@ -80,8 +118,15 @@ public class ViewOpenPack : MonoBehaviour {
 
         cardX = (Screen.width - cardWidth)/2.0f;
 
-        cardNameX = cardX + Screen.width * 0.02f;
-        cardNameY = cardY + Screen.height * 0.02f;
+        cardNameX = cardX + Screen.width * 0.11382f;
+        cardNameY = cardY + Screen.height * 0.0300f;
+        cardNameWidth = cardWidth - 50;//cardWidth * 0.11382f;
+        cardNameHeight = cardHeight * 0.11439f;
+
+        statX = cardNameX;
+        statY = cardY + cardHeight * 0.58118f;
+        statWidth = cardNameWidth;
+        statHeight = cardHeight * 0.075f;
 
         buttonY = cardY + cardHeight + Screen.height * 0.05f;
         buttonHeight = Screen.height * 0.075f;
@@ -92,14 +137,18 @@ public class ViewOpenPack : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 
+        cards = new BronzePack().Open();
+
+        /*
         if (GetCurrentInfo.TypeOfPackToOpen.packType == 1)
             cards = new BronzePack().Open();
         else if (GetCurrentInfo.TypeOfPackToOpen.packType == 2)
             cards = new SilverPack().Open();
         else
             cards = new GoldPack().Open();
-
+    */
     }
 }

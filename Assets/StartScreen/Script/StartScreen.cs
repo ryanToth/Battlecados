@@ -17,7 +17,7 @@ public class StartScreen : MonoBehaviour {
 
         if (Event.current.type == EventType.KeyDown || Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(7);
         }
     }
 
