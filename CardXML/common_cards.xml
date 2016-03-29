@@ -29,6 +29,10 @@
     <cardType>5</cardType>
     <name>Rusty Bottlecap</name>
     <flavourText>A rusty bottlecap</flavourText>
+    <attack></attack>
+    <defence></defence>
+    <speed></speed>
+    <health></health>
     <salvageValue>1</salvageValue>
   </card>
 </cards>
