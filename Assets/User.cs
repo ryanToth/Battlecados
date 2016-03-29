@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.Networking;
+using UnityEngine.SceneManagement;
 
 public class User : MonoBehaviour {
 
+    
     private int _userCode;
 
     public int UserCode
@@ -444,7 +446,7 @@ public class User : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
+        SceneManager.LoadScene(1);
 	}
 	
 	// Update is called once per frame
