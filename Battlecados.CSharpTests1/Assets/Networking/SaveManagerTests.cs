@@ -40,5 +40,19 @@ namespace Assets.Networking.Tests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod()]
+        public void TryGoToNextLevelTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int storyLevel = 3;
+
+            // Act
+            bool result = SaveManager.TryGoToNextLevel(userCode, storyLevel);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }

@@ -160,8 +160,20 @@ namespace Assets.Networking
         // Attempts to save user info after a story mode battle win, returns true if save was successful, false otherwise
         public static bool TryGoToNextLevel(int userCode, int storyLevel)
         {
-            bool success = true;
-
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string sql = "UPDATE User SET storyLevel=" + storyLevel + " WHERE userCode=" + userCode;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
             return success;
         }
 
