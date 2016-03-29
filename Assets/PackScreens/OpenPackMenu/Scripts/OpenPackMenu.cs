@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class OpenPackMenu : MonoBehaviour
 {
-
     public Texture backgroundTexture;
 
     public float packX;

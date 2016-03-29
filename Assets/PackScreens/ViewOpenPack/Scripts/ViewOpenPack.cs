@@ -6,7 +6,10 @@ using System.Collections.Generic;
 public class ViewOpenPack : MonoBehaviour {
 
     public Texture backgroundTexture;
-    public Texture2D[] cardImages;
+
+    public Texture[] cardTypeImages;
+    public Texture[] cardSubTypeImages;
+
     public List<Card> cards;
     public int currentIndex = 0;
 
@@ -14,6 +17,11 @@ public class ViewOpenPack : MonoBehaviour {
     public float cardX;
     public float cardHeight;
     public float cardWidth;
+
+    public float cardNameY;
+    public float cardNameX;
+    public float cardNameWidth;
+    public float cardNameHeight;
 
     public float buttonY;
     public float nextButtonX;
@@ -29,7 +37,7 @@ public class ViewOpenPack : MonoBehaviour {
 
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 
-        GUI.DrawTexture(new Rect(cardX, cardY, cardWidth, cardHeight), cardImages[currentIndex]);
+        GUI.DrawTexture(new Rect(cardX, cardY, cardWidth, cardHeight), cardTypeImages[(int)cards[currentIndex].CardType]);
 
         if (currentIndex != 0)
         {
@@ -65,12 +73,15 @@ public class ViewOpenPack : MonoBehaviour {
 
     private void SetRelativeComponentSizes()
     {
-        cardY = Screen.height * 0.25f;
+        cardY = Screen.height * 0.10f;
         
-        cardHeight = Screen.height *0.39604f;
-        cardWidth = Screen.width * 0.51228f;
+        cardHeight = Screen.height *0.39604f * 1.5f;
+        cardWidth = Screen.width * 0.51228f * 1.5f;
 
         cardX = (Screen.width - cardWidth)/2.0f;
+
+        cardNameX = cardX + Screen.width * 0.02f;
+        cardNameY = cardY + Screen.height * 0.02f;
 
         buttonY = cardY + cardHeight + Screen.height * 0.05f;
         buttonHeight = Screen.height * 0.075f;
