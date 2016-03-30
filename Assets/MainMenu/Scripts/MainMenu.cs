@@ -75,6 +75,7 @@ public class MainMenu : MonoBehaviour {
         if (GUI.Button(new Rect(0, storyButtonY, firstTwoButtonsWidth, firstTwoButtonsHeight), "", storyButtonStyle))
         {
             print("Clicked Story Button");
+            SceneManager.LoadScene(8);
         }
 
         if (GUI.Button(new Rect(0, versusButtonY, firstTwoButtonsWidth, firstTwoButtonsHeight), "", versusButtonStyle))

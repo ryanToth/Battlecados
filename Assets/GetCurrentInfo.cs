@@ -21,4 +21,14 @@ public class GetCurrentInfo {
             return gameObject.GetComponent<TypeOfPackBought>();
         }
     }
+
+    public static EnemyEyes EnemyEyes
+    {
+        get
+        {
+            var gameObject = GameObject.FindGameObjectWithTag("User");
+
+            return gameObject.GetComponent<EnemyEyes>();
+        }
+    }
 }

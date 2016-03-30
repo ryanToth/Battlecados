@@ -55,7 +55,7 @@ public class ViewOpenPack : MonoBehaviour {
 
         GUI.Label(new Rect(cardNameX, cardNameY, cardNameWidth, cardNameHeight), cards[currentIndex].Name, cardNameStyle);
 
-        cardImage = Resources.Load(cards[currentIndex].CardID.ToString(), typeof(Texture2D)) as Texture2D;
+        cardImage = Resources.Load("Cards/" + cards[currentIndex].CardID.ToString(), typeof(Texture2D)) as Texture2D;
 
         GUI.DrawTexture(new Rect(cardImageX, cardImageY, cardImageWidth, cardImageHeight), cardImage);
 
