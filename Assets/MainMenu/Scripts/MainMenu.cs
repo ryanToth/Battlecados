@@ -23,9 +23,11 @@ public class MainMenu : MonoBehaviour {
     public GUIStyle buyCardsButtonStyle;
     public GUIStyle manageCardsButtonStyle;
 
+    /*
     float pointerFingerY;
     public float pointerFingerWidth;
     public float pointerFingerHeight;
+    */
 
     public int pointerFingerIndex = 0;
 
@@ -59,7 +61,7 @@ public class MainMenu : MonoBehaviour {
         userLevel = user.Avocado.Level;
 
         userLevelX = 0;
-        userLevelY = Screen.height * 0.97f;
+        userLevelY = Screen.height * 0.965f;
         userLevelWidth = Screen.width * 0.25f;
         userLevelHeight = Screen.width - userLevelY;
 

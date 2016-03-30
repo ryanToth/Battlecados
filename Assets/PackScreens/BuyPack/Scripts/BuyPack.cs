@@ -151,7 +151,7 @@ public class BuyPack : MonoBehaviour {
         userLevel = user.Avocado.Level;
 
         userLevelX = 0;
-        userLevelY = Screen.height * 0.97f;
+        userLevelY = Screen.height * 0.965f;
         userLevelWidth = Screen.width * 0.25f;
         userLevelHeight = Screen.width - userLevelY;
 

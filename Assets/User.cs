@@ -202,6 +202,21 @@ public class User : MonoBehaviour {
         // Should have some code here to initialize the User's Cards list
     }
 
+    // Called any other time a user logs in successfully
+    public void SetValues(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
+    {
+        _username = username;
+        _userCode = userCode;
+        _gold = gold;
+        _bronzePacks = bronzePacks;
+        _silverPacks = silverPacks;
+        _goldPacks = goldPacks;
+        _storyLevel = storyLevel;
+
+        _avocado = avocado;
+        // Should have some code here to initialize the User's Cards list
+    }
+
     //Copy constructor
     public void CopyUser(User user)
     {

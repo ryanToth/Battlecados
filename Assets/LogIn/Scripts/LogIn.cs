@@ -94,8 +94,6 @@ public class LogIn : MonoBehaviour {
             User user;
             if (SaveManager.TryLogIn(userNameInput, passwordInput, out user))
             {
-                User thing = GetCurrentInfo.User;
-                thing.CopyUser(user);
                 SceneManager.LoadScene(2);
                 Destroy(this);
             }
