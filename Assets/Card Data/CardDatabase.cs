@@ -15,9 +15,9 @@ namespace Assets.Card_Data
 
         public CardDatabase()
         {
-            _commonCards = ReadXML("CardXML/common_cards.xml", CardRarity.Common);
-            _uncommonCards = ReadXML("CardXML/uncommon_cards.xml", CardRarity.Uncommon);
-            _rareCards = ReadXML("CardXML/rare_cards.xml", CardRarity.Rare);
+            _commonCards = ReadXML("Assets/CardXML/common_cards.xml", CardRarity.Common);
+            _uncommonCards = ReadXML("Assets/CardXML/uncommon_cards.xml", CardRarity.Uncommon);
+            _rareCards = ReadXML("Assets/CardXML/rare_cards.xml", CardRarity.Rare);
         }
 
         public Card GetCommonCard()

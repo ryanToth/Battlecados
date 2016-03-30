@@ -9,6 +9,7 @@ public class ViewOpenPack : MonoBehaviour {
 
     public Texture[] cardTypeImages;
     public Texture[] cardSubTypeImages;
+    public Texture2D cardImage;
 
     public List<Card> cards;
     public int currentIndex = 0;
@@ -17,6 +18,11 @@ public class ViewOpenPack : MonoBehaviour {
     public float cardX;
     public float cardHeight;
     public float cardWidth;
+
+    public float cardImageX;
+    public float cardImageY;
+    public float cardImageWidth;
+    public float cardImageHeight;
 
     public float cardNameY;
     public float cardNameX;
@@ -49,6 +55,10 @@ public class ViewOpenPack : MonoBehaviour {
 
         GUI.Label(new Rect(cardNameX, cardNameY, cardNameWidth, cardNameHeight), cards[currentIndex].Name, cardNameStyle);
 
+        cardImage = Resources.Load(cards[currentIndex].CardID.ToString(), typeof(Texture2D)) as Texture2D;
+
+        GUI.DrawTexture(new Rect(cardImageX, cardImageY, cardImageWidth, cardImageHeight), cardImage);
+
         statNum = 0;
 
         if (cards[currentIndex].AttackEffect != 0)
@@ -75,7 +85,7 @@ public class ViewOpenPack : MonoBehaviour {
             statNum++;
         }
 
-        GUI.Label(new Rect(statX, statY + statNum * statHeight, statWidth, statHeight), "Value: " + cards[currentIndex].SalvageValue.ToString(), statStyle);
+        GUI.Label(new Rect(statX, statY + 4 * statHeight, statWidth, statHeight), "Salvage Value: " + cards[currentIndex].SalvageValue.ToString(), statStyle);
 
         if (currentIndex != 0)
         {
@@ -120,13 +130,22 @@ public class ViewOpenPack : MonoBehaviour {
 
         cardNameX = cardX + Screen.width * 0.11382f;
         cardNameY = cardY + Screen.height * 0.0300f;
-        cardNameWidth = cardWidth - 50;//cardWidth * 0.11382f;
+        cardNameWidth = cardWidth - (cardNameX - cardX) * 2.0f;
         cardNameHeight = cardHeight * 0.11439f;
 
-        statX = cardNameX;
+        cardNameStyle.fontSize = (int)(Screen.width * (1 / 18.0f));
+
+        cardImageX = cardX + cardWidth * 0.164f;
+        cardImageY = cardY + cardHeight * 0.1981f;
+        cardImageWidth = cardWidth * 0.675f;
+        cardImageHeight = cardHeight * 0.325f;
+
+        statX = cardX;
         statY = cardY + cardHeight * 0.58118f;
-        statWidth = cardNameWidth;
+        statWidth = cardWidth;
         statHeight = cardHeight * 0.075f;
+
+        statStyle.fontSize = (int)(Screen.width * (1 / 19.0f));
 
         buttonY = cardY + cardHeight + Screen.height * 0.05f;
         buttonHeight = Screen.height * 0.075f;
@@ -139,16 +158,13 @@ public class ViewOpenPack : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        User user = GetCurrentInfo.User;
 
-        cards = new BronzePack().Open();
-
-        /*
         if (GetCurrentInfo.TypeOfPackToOpen.packType == 1)
-            cards = new BronzePack().Open();
+            cards = user.OpenBronzePack();
         else if (GetCurrentInfo.TypeOfPackToOpen.packType == 2)
-            cards = new SilverPack().Open();
+            cards = user.OpenSilverPack();
         else
-            cards = new GoldPack().Open();
-    */
+            cards = user.OpenGoldPack();
     }
 }

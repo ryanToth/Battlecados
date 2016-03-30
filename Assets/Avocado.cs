@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Avocado : MonoBehaviour {
+public class Avocado {
 
     private int _level;
 
@@ -418,14 +418,4 @@ public class Avocado : MonoBehaviour {
 
         return cardToReturn;
     }
-
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

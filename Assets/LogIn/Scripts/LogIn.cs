@@ -35,7 +35,7 @@ public class LogIn : MonoBehaviour {
     {
         GUI.skin.label.fontSize = (int)(Screen.width * 0.070);
         GUI.skin.button.fontSize = (int)(Screen.width * 0.066);
-        GUI.skin.textField.fontSize = (int)(Screen.width * 0.075);
+        GUI.skin.textField.fontSize = (int)(Screen.width * 0.06);
 
         loginButtonX = Screen.width * 0.33f;
         loginButtonY = Screen.height * 0.70f;
@@ -55,16 +55,16 @@ public class LogIn : MonoBehaviour {
         loginPasswordWidth = Screen.width * 0.50f;
         loginPasswordHeight = Screen.width * 0.10f;
 
-        createAccountButtonY = Screen.height * 0.90f;
+        createAccountButtonY = Screen.height * 0.85f;
         createAcountButtonWidth = Screen.width * 0.50f;
 
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 
         GUI.Label(new Rect(loginUsernameX, usernameLabelY, loginUsernameWidth, loginUsernameHeight), "Username:");
-        userNameInput = GUI.TextField(new Rect(loginUsernameX, loginUsernameY, loginUsernameWidth, loginUsernameHeight), userNameInput, 9);
+        userNameInput = GUI.TextField(new Rect(loginUsernameX, loginUsernameY, loginUsernameWidth, loginUsernameHeight), userNameInput, 11);
 
         GUI.Label(new Rect(loginPasswordX, passwordLabelY, loginPasswordWidth, loginPasswordHeight), "Password:");
-        passwordInput = GUI.PasswordField(new Rect(loginPasswordX, loginPasswordY, loginPasswordWidth, loginPasswordHeight), passwordInput, '*', 9);
+        passwordInput = GUI.PasswordField(new Rect(loginPasswordX, loginPasswordY, loginPasswordWidth, loginPasswordHeight), passwordInput, '*', 11);
 
         if (GUI.Button(new Rect(loginButtonX, loginButtonY, loginButtonWidth, loginButtonHeight), "Log In"))
         {
@@ -94,8 +94,6 @@ public class LogIn : MonoBehaviour {
             User user;
             if (SaveManager.TryLogIn(userNameInput, passwordInput, out user))
             {
-                User thing = GetCurrentInfo.User;
-                thing.CopyUser(user);
                 SceneManager.LoadScene(2);
                 Destroy(this);
             }

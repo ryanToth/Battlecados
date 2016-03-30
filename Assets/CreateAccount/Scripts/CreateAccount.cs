@@ -64,6 +64,11 @@ public class CreateAccount : MonoBehaviour {
         {
             CreateNewAccount();
         }
+
+        if (GUI.Button(new Rect(CommonElementSizes.backX, CommonElementSizes.backY, CommonElementSizes.backWidth, CommonElementSizes.backHeight), "Back"))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
     void Update()
     {

@@ -202,6 +202,21 @@ public class User : MonoBehaviour {
         // Should have some code here to initialize the User's Cards list
     }
 
+    // Called any other time a user logs in successfully
+    public void SetValues(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
+    {
+        _username = username;
+        _userCode = userCode;
+        _gold = gold;
+        _bronzePacks = bronzePacks;
+        _silverPacks = silverPacks;
+        _goldPacks = goldPacks;
+        _storyLevel = storyLevel;
+
+        _avocado = avocado;
+        // Should have some code here to initialize the User's Cards list
+    }
+
     //Copy constructor
     public void CopyUser(User user)
     {
@@ -403,40 +418,52 @@ public class User : MonoBehaviour {
         }
     }
 
-    public void OpenBronzePack()
+    public List<Card> OpenBronzePack()
     {
         if (_bronzePacks > 0)
         {
             BronzePack pack = new BronzePack();
-            Cards.AddRange(pack.Open());
+            List<Card> newCards = pack.Open();
+            Cards.AddRange(newCards);
             _bronzePacks--;
 
             SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+
+            return newCards;
         }
+        return null;
     }
 
-    public void OpenSilverPack()
+    public List<Card> OpenSilverPack()
     {
         if (_silverPacks > 0)
         {
             SilverPack pack = new SilverPack();
-            Cards.AddRange(pack.Open());
+            List<Card> newCards = pack.Open();
+            Cards.AddRange(newCards);
             _silverPacks--;
 
             SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+
+            return newCards;
         }
+        return null;
     }
 
-    public void OpenGoldPack()
+    public List<Card> OpenGoldPack()
     {
         if (_goldPacks > 0)
         {
             GoldPack pack = new GoldPack();
-            Cards.AddRange(pack.Open());
+            List<Card> newCards = pack.Open();
+            Cards.AddRange(newCards);
             _goldPacks--;
 
             SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+
+            return newCards;
         }
+        return null;
     }
 
     void Awake()

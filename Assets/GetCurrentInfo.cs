@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GetCurrentInfo : MonoBehaviour {
+public class GetCurrentInfo {
 
     public static User User
     {
@@ -16,7 +16,7 @@ public class GetCurrentInfo : MonoBehaviour {
     {
         get
         {
-            var gameObject = GameObject.FindGameObjectWithTag("TypeOfPack");
+            var gameObject = GameObject.FindGameObjectWithTag("User");
 
             return gameObject.GetComponent<TypeOfPackBought>();
         }

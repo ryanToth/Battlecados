@@ -23,13 +23,27 @@ public class MainMenu : MonoBehaviour {
     public GUIStyle buyCardsButtonStyle;
     public GUIStyle manageCardsButtonStyle;
 
+    /*
     float pointerFingerY;
     public float pointerFingerWidth;
     public float pointerFingerHeight;
+    */
 
     public int pointerFingerIndex = 0;
 
     public GUIStyle pointerFingerStyle;
+
+    public int userLevel;
+    public float userLevelX;
+    public float userLevelY;
+    public float userLevelWidth;
+    public float userLevelHeight;
+
+    public GUIStyle statBarStyle;
+
+    public User user;
+
+    public int experienceToNextLevel;
     void OnGUI()
     {
         storyButtonY = Screen.height * 0.43168f;
@@ -44,14 +58,23 @@ public class MainMenu : MonoBehaviour {
         lastTwoButtonsWidth = Screen.width * 0.60701f;
         lastTwoButtonsHeight = Screen.height * 0.125f;
 
+        userLevel = user.Avocado.Level;
+
+        userLevelX = 0;
+        userLevelY = Screen.height * 0.965f;
+        userLevelWidth = Screen.width * 0.25f;
+        userLevelHeight = Screen.width - userLevelY;
+
+        statBarStyle.fontSize = (int)(Screen.width * 0.05);
+
+        experienceToNextLevel = user.Avocado.ExperiencePointsToNextLevel;
+
         //Display our background texture
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 
         if (GUI.Button(new Rect(0, storyButtonY, firstTwoButtonsWidth, firstTwoButtonsHeight), "", storyButtonStyle))
         {
             print("Clicked Story Button");
-
-
         }
 
         if (GUI.Button(new Rect(0, versusButtonY, firstTwoButtonsWidth, firstTwoButtonsHeight), "", versusButtonStyle))
@@ -71,6 +94,7 @@ public class MainMenu : MonoBehaviour {
             SceneManager.LoadScene(5);
         }
 
+        /*
         pointerFingerWidth = Screen.width * 0.28421f;
         pointerFingerHeight = Screen.height * 0.12079f;
 
@@ -80,10 +104,21 @@ public class MainMenu : MonoBehaviour {
         else if (pointerFingerIndex == 3) pointerFingerY = manageCardsButtonY;
 
         GUI.Label(new Rect(firstTwoButtonsWidth, pointerFingerY, pointerFingerWidth, pointerFingerHeight), "", pointerFingerStyle);
+        */
+
+        // Stat bar at the bottom of the screen
+        GUI.Label(new Rect(userLevelX, userLevelY, userLevelWidth, userLevelHeight), "Lvl. " + userLevel.ToString(), statBarStyle);
+        GUI.Label(new Rect(userLevelX + userLevelWidth, userLevelY, Screen.width - userLevelWidth, userLevelHeight), "Experience To Next Level: " + experienceToNextLevel.ToString(), statBarStyle);
+    }
+
+    void Start()
+    {
+        user = GetCurrentInfo.User;
     }
 
     public void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (pointerFingerIndex != 3) pointerFingerIndex++;
@@ -112,5 +147,6 @@ public class MainMenu : MonoBehaviour {
                     break;
             }
         }
+        */
     }
 }

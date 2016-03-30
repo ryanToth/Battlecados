@@ -38,6 +38,17 @@ public class BuyPack : MonoBehaviour {
     public int silverPrice;
     public int bronzePrice;
 
+    public int userLevel;
+    public float userLevelX;
+    public float userLevelY;
+    public float userLevelWidth;
+    public float userLevelHeight;
+
+    public int experienceToNextLevel;
+
+    public GUIStyle statBarStyle;
+
+
     // Temporary addition
     int userGold;
 
@@ -94,6 +105,10 @@ public class BuyPack : MonoBehaviour {
             //Go to Main Menu
             SceneManager.LoadScene(2);
         }
+
+        // Stat bar at the bottom of the screen
+        GUI.Label(new Rect(userLevelX, userLevelY, userLevelWidth, userLevelHeight), "Lvl. " + userLevel.ToString(), statBarStyle);
+        GUI.Label(new Rect(userLevelX + userLevelWidth, userLevelY, Screen.width - userLevelWidth, userLevelHeight), "Experience To Next Level: " + experienceToNextLevel.ToString(), statBarStyle);
     }
 
     void Start()
@@ -110,11 +125,14 @@ public class BuyPack : MonoBehaviour {
 
     void SetRelativeComponentSizes()
     {
-        packX = Screen.width * 0.15f;
+        priceLabelStyle.fontSize = (int)(Screen.width * 0.05f);
+        userGoldStyle.fontSize = (int)(Screen.width * 0.06f);
+
+        packX = Screen.width * 0.10f;
         packWidth = Screen.width * 0.40f;
         packHeight = Screen.height * 0.25f;
 
-        bronzeY = Screen.height * 0.06f;
+        bronzeY = Screen.height * 0.045f;
         silverY = bronzeY * 2 + packHeight;
         goldY = bronzeY * 3 + 2 * packHeight;
 
@@ -125,9 +143,21 @@ public class BuyPack : MonoBehaviour {
         userGoldWidth = Screen.width - userGoldX;
         userGoldHeight = Screen.height * 0.075f;
 
-        backHeight = Screen.height * 0.075f;
-        backWidth = Screen.width * 0.33f;
-        backX = Screen.width - backWidth;
-        backY = Screen.height * 0.90f;
+        backHeight = CommonElementSizes.backHeight;
+        backWidth = CommonElementSizes.backWidth;
+        backX = CommonElementSizes.backX;
+        backY = CommonElementSizes.backY;
+
+        userLevel = user.Avocado.Level;
+
+        userLevelX = 0;
+        userLevelY = Screen.height * 0.965f;
+        userLevelWidth = Screen.width * 0.25f;
+        userLevelHeight = Screen.width - userLevelY;
+
+        statBarStyle.fontSize = (int)(Screen.width * 0.05);
+
+        experienceToNextLevel = user.Avocado.ExperiencePointsToNextLevel;
+
     }
 }

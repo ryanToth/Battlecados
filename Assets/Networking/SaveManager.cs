@@ -39,7 +39,7 @@ namespace Assets.Networking
         public static bool TryLogIn(string username, string password, out User user)
         {
             bool found = false;
-            user = null;
+            user = GetCurrentInfo.User;
 
             // User database work
             int userCode = 0;
@@ -94,7 +94,7 @@ namespace Assets.Networking
             Avocado cado = new Avocado(level, experiencePoints, null, null, null, null, null, null);
 
             //public User(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
-            user = new User(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, cado);
+            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, cado);
 
             return found;
         }
@@ -106,7 +106,7 @@ namespace Assets.Networking
         {
             bool success = false;
             MySqlConnection conn = DatabaseConnect();
-            user = null;
+            user = GetCurrentInfo.User;
             int userCode = 0;
             int bronzePacks = 0;
             int silverPacks = 0;
@@ -146,7 +146,7 @@ namespace Assets.Networking
             newAvocado.ExecuteNonQuery();
 
             // Creating user
-            user = new User(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado());
+            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado());
 
             DatabaseDisconnect(conn);
 
