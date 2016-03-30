@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Class for saving data that needs to be Persitant
 public class GetCurrentInfo {
 
     public static User User
