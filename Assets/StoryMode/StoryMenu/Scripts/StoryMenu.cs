@@ -18,6 +18,7 @@ public class StoryMenu : MonoBehaviour {
     public float backButtonHeight;
     public GUIStyle backButtonStyle;
 
+    public Texture enemyEyes;
     public Texture enemyToFight;
     public float enemyX;
     public float enemyY;
@@ -62,6 +63,9 @@ public class StoryMenu : MonoBehaviour {
 
         // Enemy Image
         GUI.DrawTexture(new Rect(enemyX, enemyY, enemyWidth, enemyHeight), enemyToFight);
+
+        // Enemy Eyes
+        GUI.DrawTexture(new Rect(enemyX, enemyY, enemyWidth, enemyHeight), enemyEyes);
 
         // Enemy Name Label
         GUI.Label(new Rect(enemyNameX, enemyNameY, enemyNameWidth, enemyHeight), enemyName + " Wants to Battle!", enemyNameStyle);
@@ -110,7 +114,7 @@ public class StoryMenu : MonoBehaviour {
 
         // Set once actually have the avocado image, set the height based on the width
         enemyHeight = Screen.height * 0.5f;
-        enemyWidth = Screen.width * 0.75f;
+        enemyWidth = enemyHeight * 0.83862f;
         enemyX = (Screen.width - enemyWidth) / 2;
         enemyY = (enemyNameY - (storyLevelLabelHeight + storyLevelLabelY) - enemyHeight) / 2 + storyLevelLabelY + storyLevelLabelHeight;
 
@@ -144,11 +148,12 @@ public class StoryMenu : MonoBehaviour {
 
         EnemyEyes eyes = GetCurrentInfo.EnemyEyes;
         // Eyes will be a randomly generated number between 1 and the number of eyes we have
-        eyes.eyes = 1;
+        eyes.eyes = Random.Range(1,7);
 
         // Name will be randomly generated
         enemyName = "Phil";
 
-        enemyToFight = Resources.Load("Eyes/eyes" + eyes.eyes.ToString(), typeof(Texture)) as Texture;
+        enemyToFight = Resources.Load("base cado", typeof(Texture)) as Texture;
+        enemyEyes = Resources.Load("Eyes/eyes" + eyes.eyes.ToString(), typeof(Texture)) as Texture;
     }
 }
