@@ -21,46 +21,45 @@ Platform assembly: C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed
 Loading C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\MySql.Data.DLL (this message is harmless)
 Loading C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\MySql.Data.DLL into Unity Child Domain
-Platform assembly: C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\System.Data.dll (this message is harmless)
-Loading C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\System.Data.dll into Unity Child Domain
-- Completed reload, in  0.602 seconds
+- Completed reload, in  0.588 seconds
 Platform assembly: C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
-desktop: 1920x1280 60Hz; virtual: 5760x1620 at 0,0
+desktop: 1920x1280 60Hz; virtual: 1920x1280 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 1.403564 ms
+UnloadTime: 34.813892 ms
 [VRDevice] Initialization of device oculus failed.
 
  
 (Filename:  Line: 86)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.702742 ms
+UnloadTime: 1.392683 ms
 
 Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 195.
-Total: 0.329610 ms (FindLiveObjects: 0.051841 ms CreateObjectMapping: 0.024320 ms MarkObjects: 0.220166 ms  DeleteObjects: 0.030720 ms)
+Total: 0.321930 ms (FindLiveObjects: 0.055681 ms CreateObjectMapping: 0.021760 ms MarkObjects: 0.212486 ms  DeleteObjects: 0.030720 ms)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.741143 ms
+UnloadTime: 0.652180 ms
 
 Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 195.
-Total: 0.422413 ms (FindLiveObjects: 0.099203 ms CreateObjectMapping: 0.040961 ms MarkObjects: 0.268808 ms  DeleteObjects: 0.010880 ms)
+Total: 0.349450 ms (FindLiveObjects: 0.100483 ms CreateObjectMapping: 0.019840 ms MarkObjects: 0.216326 ms  DeleteObjects: 0.010880 ms)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.580498 ms
+UnloadTime: 0.625299 ms
 
 Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 195.
-Total: 0.284168 ms (FindLiveObjects: 0.048001 ms CreateObjectMapping: 0.019200 ms MarkObjects: 0.207366 ms  DeleteObjects: 0.008320 ms)
+Total: 0.298249 ms (FindLiveObjects: 0.050561 ms CreateObjectMapping: 0.019200 ms MarkObjects: 0.216966 ms  DeleteObjects: 0.009600 ms)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.562577 ms
+UnloadTime: 0.614419 ms
 
 Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 195.
-Total: 0.293129 ms (FindLiveObjects: 0.047361 ms CreateObjectMapping: 0.019200 ms MarkObjects: 0.215686 ms  DeleteObjects: 0.008960 ms)
+Total: 0.396172 ms (FindLiveObjects: 0.058881 ms CreateObjectMapping: 0.019200 ms MarkObjects: 0.300809 ms  DeleteObjects: 0.014720 ms)
 
+Platform assembly: C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\System.Data.dll (this message is harmless)
 Platform assembly: C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\System.Xml.dll (this message is harmless)
 Platform assembly: C:\Users\ryant\Documents\Battlecados\battlecados_Data\Managed\System.Transactions.dll (this message is harmless)
 NullReferenceException: Object reference not set to an instance of an object
@@ -71,5 +70,197 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at GetCurrentInfo.get_User () [0x00000] in <filename unknown>:0 
+  at Assets.Networking.SaveManager.TryLogIn (System.String username, System.String password, .User& user) [0x00000] in <filename unknown>:0 
+  at LogIn.Login () [0x00000] in <filename unknown>:0 
+  at LogIn.OnGUI () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 2aac -> priority: 1 
+  Thread -> id: 8f8 -> priority: 1 
