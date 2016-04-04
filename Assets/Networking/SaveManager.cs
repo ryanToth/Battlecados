@@ -225,7 +225,31 @@ namespace Assets.Networking
         // Card collection is a list of card id's that the user has in their collection
         public static bool TryOpenPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, IEnumerable<int> cardCollection)
         {
-            bool success = true;
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                // Update user card packs
+                string sql = "UPDATE User SET bronzePacks=" + numberOfBronzePacks + ", silverPacks=" + numberOfSilverPacks
+                    + ", goldPacks=" + numberOfGoldPacks + " WHERE userCode=" + userCode;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                // Update user cards
+                foreach (int cardID in cardCollection)
+                {
+                    string cardsql = "INSERT INTO UserCards (userID, cardID) VALUES ('" + userCode + "', '" + cardID + "')";
+                    MySqlCommand newCard = new MySqlCommand(cardsql, conn);
+                    newCard.ExecuteNonQuery();
+                }
+                
+                success = true;
+                DatabaseDisconnect(conn);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
 
             return success;
         }
