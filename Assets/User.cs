@@ -204,7 +204,7 @@ public class User : MonoBehaviour {
     }
 
     // Called any other time a user logs in successfully
-    public void SetValues(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
+    public void SetValues(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado, IEnumerable<int> userCards, IEnumerable<int> avocadoCards)
     {
         _username = username;
         _userCode = userCode;
@@ -215,7 +215,45 @@ public class User : MonoBehaviour {
         _storyLevel = storyLevel;
 
         _avocado = avocado;
+
         // Should have some code here to initialize the User's Cards list
+
+        CardDatabase cardDatabase = new CardDatabase();
+
+        _cards = cardDatabase.GetCardsInfo(userCards);
+
+        List<Card> cadoCards = cardDatabase.GetCardsInfo(avocadoCards);
+
+        // Make switch statement later
+        foreach (Card card in cadoCards)
+        {
+            CardType type = card.CardType;
+            switch (type)
+            {
+                case CardType.OneHandedWeapon:
+                    if (_avocado.RightHandWeapon != null)
+                    {
+                        _avocado.EquipRightHandWeapon(card);
+                    }
+                    else
+                    {
+                        _avocado.EquipLeftHandWeapon(card);
+                    }
+                    break;
+                case CardType.TwoHandedWeapon:
+                    _avocado.EquipTwoHandWeapon(card);
+                    break;
+                case CardType.Support:
+                    _avocado.TryEquipSupportCard(card);
+                    break;
+                case CardType.ChestArmor:
+                    _avocado.EquipChestArmor(card);
+                    break;
+                case CardType.HeadArmor:
+                    _avocado.EquipHeadArmor(card);
+                    break;
+            }
+        }
     }
 
     //Copy constructor
