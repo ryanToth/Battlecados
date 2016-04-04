@@ -256,15 +256,49 @@ namespace Assets.Networking
 
         public static bool TryEquipCardToAvocado(int userCode, int cardID)
         {
-            bool success = true;
-
+            // Remove **First instance** from UserCards, insert into AvocadoCards
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string usersql = "DELETE FROM UserCards WHERE userID = " + userCode + " AND cardID = " + cardID + " LIMIT 1;";
+                MySqlCommand usercmd = new MySqlCommand(usersql, conn);
+                usercmd.ExecuteNonQuery();
+                string cadosql = "INSERT INTO AvocadoCards (avocadoID, cardID) VALUES (" + userCode + ", " + cardID + ")";
+                MySqlCommand cadocmd = new MySqlCommand(cadosql, conn);
+                cadocmd.ExecuteNonQuery();
+                success = true;
+                DatabaseDisconnect(conn);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+             }
             return success;
         }
 
         public static bool TryUnequipCardToAvocado(int userCode, int cardID)
         {
-            bool success = true;
-
+            // Remove **First instance** from AvocadoCards, insert into UserCards
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string usersql = "DELETE FROM AvocadoCards WHERE avocadoID = " + userCode + " AND cardID = " + cardID + " LIMIT 1;";
+                MySqlCommand usercmd = new MySqlCommand(usersql, conn);
+                usercmd.ExecuteNonQuery();
+                string cadosql = "INSERT INTO UserCards (userID, cardID) VALUES (" + userCode + ", " + cardID + ")";
+                MySqlCommand cadocmd = new MySqlCommand(cadosql, conn);
+                cadocmd.ExecuteNonQuery();
+                success = true;
+                DatabaseDisconnect(conn);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
             return success;
         }
 
