@@ -254,8 +254,14 @@ namespace Assets.Networking
             return success;
         }
 
-        // Anytime a card is equipped or unequipped from an Avocado, the result needs to be saved, return true if save was successful, false otherwise
-        public static bool TryUpdateAvococado(int userCode, Avocado avocado, IEnumerable<int> cardCollection)
+        public static bool TryEquipCardToAvocado(int userCode, int cardID)
+        {
+            bool success = true;
+
+            return success;
+        }
+
+        public static bool TryUnquipCardToAvocado(int userCode, int cardID)
         {
             bool success = true;
 
@@ -263,7 +269,7 @@ namespace Assets.Networking
         }
 
         // Attempts to save user info after a card is sold, returns true if successful, false otherwise
-        public static bool TrySellCard(int userCode, int gold, IEnumerable<int> cardCollection)
+        public static bool TrySellCard(int userCode, int gold, int cardID)
         {
             bool success = true;
 

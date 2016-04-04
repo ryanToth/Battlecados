@@ -293,7 +293,7 @@ public class User : MonoBehaviour {
         {
             _gold += card.SalvageValue;
 
-            SaveManager.TrySellCard(_userCode, _gold, CardCollectionIDs);
+            SaveManager.TrySellCard(_userCode, _gold, card.CardID);
         }
     }
 
