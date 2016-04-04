@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Networking;
 using UnityEngine.SceneManagement;
+using Assets.Card_Data;
 
 public class User : MonoBehaviour {
 
