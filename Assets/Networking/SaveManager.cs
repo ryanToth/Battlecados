@@ -174,7 +174,7 @@ namespace Assets.Networking
 
             // Creating user
             List<int> empty = new List<int>();
-            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado(), empty);
+            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado(), empty, empty);
 
             DatabaseDisconnect(conn);
 
