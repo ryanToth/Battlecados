@@ -235,9 +235,9 @@ namespace Assets.Networking
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
                 // Update user cards
-                foreach (int cardID in cardCollection)
+                foreach (Card card in cardCollection)
                 {
-                    string cardsql = "INSERT INTO UserCards (userID, cardID) VALUES ('" + userCode + "', '" + cardID + "')";
+                    string cardsql = "INSERT INTO UserCards (userID, cardID) VALUES ('" + userCode + "', '" + card.CardID + "')";
                     MySqlCommand newCard = new MySqlCommand(cardsql, conn);
                     newCard.ExecuteNonQuery();
                 }
