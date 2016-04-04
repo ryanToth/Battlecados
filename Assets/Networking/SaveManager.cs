@@ -88,13 +88,40 @@ namespace Assets.Networking
                 supportCards = Convert.ToInt32(cado_rdr[8]);
             }
             cado_rdr.Close();
+
+            // UserCards database work
+            string card_sql = "SELECT cardID FROM UserCards WHERE userID = " + userCode;
+            MySqlCommand card_cmd = new MySqlCommand(card_sql, conn);
+            MySqlDataReader card_rdr = card_cmd.ExecuteReader();
+            List<int> cardList = new List<int>();
+            int cardID = 0;
+            while (card_rdr.Read())
+            {
+                cardID = Convert.ToInt32(card_rdr[0]);
+                cardList.Add(cardID);
+            }
+            card_rdr.Close();
+
+            // AvocadoCards database work
+            string cadocard_sql = "SELECT cardID FROM AvocadoCards WHERE avocadoID = " + userCode;
+            MySqlCommand cadocard_cmd = new MySqlCommand(cadocard_sql, conn);
+            MySqlDataReader cadocard_rdr = cadocard_cmd.ExecuteReader();
+            List<int> cadocardList = new List<int>();
+            int cadocardID = 0;
+            while (cadocard_rdr.Read())
+            {
+                cadocardID = Convert.ToInt32(cadocard_rdr[0]);
+                cadocardList.Add(cardID);
+            }
+            cadocard_rdr.Close();
             DatabaseDisconnect(conn);
             //public Avocado(int level, int experiencePoints, Card rightHandedWeapon, Card leftHandedWeapon, Card twoHandedWeapon,
                 //Card headArmor, Card chestArmor, List<Card> supportCards)
+
             Avocado cado = new Avocado(level, experiencePoints, null, null, null, null, null, null);
 
             //public User(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
-            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, cado);
+            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, cado, cardList, cadocardList);
 
             return found;
         }
@@ -146,7 +173,8 @@ namespace Assets.Networking
             newAvocado.ExecuteNonQuery();
 
             // Creating user
-            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado());
+            List<int> empty = new List<int>();
+            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado(), empty);
 
             DatabaseDisconnect(conn);
 
