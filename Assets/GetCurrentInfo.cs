@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Class for saving data that needs to be Persitant
 public class GetCurrentInfo {
 
     public static User User
@@ -19,6 +20,16 @@ public class GetCurrentInfo {
             var gameObject = GameObject.FindGameObjectWithTag("User");
 
             return gameObject.GetComponent<TypeOfPackBought>();
+        }
+    }
+
+    public static EnemyEyes EnemyEyes
+    {
+        get
+        {
+            var gameObject = GameObject.FindGameObjectWithTag("User");
+
+            return gameObject.GetComponent<EnemyEyes>();
         }
     }
 }

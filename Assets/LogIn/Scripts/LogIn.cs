@@ -95,7 +95,6 @@ public class LogIn : MonoBehaviour {
             if (SaveManager.TryLogIn(userNameInput, passwordInput, out user))
             {
                 SceneManager.LoadScene(2);
-                Destroy(this);
             }
         }
     }
@@ -105,7 +104,6 @@ public class LogIn : MonoBehaviour {
         print("Create New User Account");
 
         SceneManager.LoadScene(3);
-        Destroy(this);
     }
 
 }

@@ -90,7 +90,6 @@ public class CreateAccount : MonoBehaviour {
                 User thing = GetCurrentInfo.User;
                 thing.CopyUser(user);
                 SceneManager.LoadScene(2);
-                Destroy(this);
             }
         }
     }
