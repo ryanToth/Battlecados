@@ -96,9 +96,23 @@ namespace Assets.Networking.Tests
             int numberOfBronzePacks = 5;
             int numberOfSilverPacks = 3;
             int numberOfGoldPacks = 2;
-            List<int> cardCollection = new List<int> (new int[] { 1, 2, 3 });
+            List<int> cardCollection = new List<int>(new int[] { 1, 2, 3 });
             // Act
             bool result = SaveManager.TryOpenPack(userCode, numberOfBronzePacks, numberOfSilverPacks, numberOfGoldPacks, cardCollection);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod()]
+        public void TryEquipCardToAvocadoTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int cardID = 1;
+
+            // Act
+            bool result = SaveManager.TryEquipCardToAvocado(userCode, cardID);
 
             // Assert
             Assert.IsTrue(result);
