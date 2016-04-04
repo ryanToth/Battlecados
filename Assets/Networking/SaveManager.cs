@@ -220,7 +220,29 @@ namespace Assets.Networking
 
             return success;
         }
+        // Attempts to save user info after a card is sold, returns true if successful, false otherwise
+        public static bool TrySellCard(int userCode, int gold, int cardID)
+        {
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string sql = "UPDATE User SET gold=" + gold + " WHERE userCode=" + userCode;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                string cardsql = "DELETE FROM UserCards WHERE userID = " + userCode + " AND cardID = " + cardID + " LIMIT 1;";
+                MySqlCommand cardcmd = new MySqlCommand(cardsql, conn);
+                cardcmd.ExecuteNonQuery();
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
 
+            return success;
+        }
         // Attempts to save user info after a pack is opened, returns true if save was successful, false otherwise
         // Card collection is a list of card id's that the user has in their collection
         public static bool TryOpenPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, IEnumerable<Card> cardCollection)
@@ -299,14 +321,6 @@ namespace Assets.Networking
                 Console.WriteLine(ex.ToString());
                 success = false;
             }
-            return success;
-        }
-
-        // Attempts to save user info after a card is sold, returns true if successful, false otherwise
-        public static bool TrySellCard(int userCode, int gold, int cardID)
-        {
-            bool success = true;
-
             return success;
         }
 

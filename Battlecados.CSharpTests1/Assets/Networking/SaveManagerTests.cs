@@ -131,5 +131,20 @@ namespace Assets.Networking.Tests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod()]
+        public void TrySellCardTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int cardID = 1;
+            int gold = 700;
+
+            // Act
+            bool result = SaveManager.TrySellCard(userCode, gold, cardID);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }
