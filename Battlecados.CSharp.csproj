@@ -106,6 +106,49 @@
     <None Include="Assets\CardXML\rare_cards.xml" />
     <None Include="Assets\CardXML\uncommon_cards.xml" />
     <None Include="Assets\OnlineVersus\ConnectingScreen\ConnectingScreen.unity" />
+    <None Include="Assets\Resources\Cards\1.jpg.meta" />
+    <None Include="Assets\Resources\Cards\1000.png.meta" />
+    <None Include="Assets\Resources\Cards\1001.png.meta" />
+    <None Include="Assets\Resources\Cards\2.jpg.meta" />
+    <None Include="Assets\Resources\Cards\2000.jpg.meta" />
+    <None Include="Assets\Resources\Cards\2001.png.meta" />
+    <None Include="Assets\Resources\Cards\3.png.meta" />
+    <None Include="Assets\Resources\Cards\4.png.meta" />
+    <None Include="Assets\Resources\Cards\5.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes1.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes2.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes3.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes4.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes4a.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes4b.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes5.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes5a.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes5b.png.meta" />
+    <None Include="Assets\Resources\Eyes\eyes6.png.meta" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Assets\Resources\back.png" />
+    <Content Include="Assets\Resources\base cado.png" />
+    <Content Include="Assets\Resources\Cards\1.jpg" />
+    <Content Include="Assets\Resources\Cards\1000.png" />
+    <Content Include="Assets\Resources\Cards\1001.png" />
+    <Content Include="Assets\Resources\Cards\2.jpg" />
+    <Content Include="Assets\Resources\Cards\2000.jpg" />
+    <Content Include="Assets\Resources\Cards\2001.png" />
+    <Content Include="Assets\Resources\Cards\3.png" />
+    <Content Include="Assets\Resources\Cards\4.png" />
+    <Content Include="Assets\Resources\Cards\5.png" />
+    <Content Include="Assets\Resources\Eyes\eyes1.png" />
+    <Content Include="Assets\Resources\Eyes\eyes2.png" />
+    <Content Include="Assets\Resources\Eyes\eyes3.png" />
+    <Content Include="Assets\Resources\Eyes\eyes4.png" />
+    <Content Include="Assets\Resources\Eyes\eyes4a.png" />
+    <Content Include="Assets\Resources\Eyes\eyes4b.png" />
+    <Content Include="Assets\Resources\Eyes\eyes5.png" />
+    <Content Include="Assets\Resources\Eyes\eyes5a.png" />
+    <Content Include="Assets\Resources\Eyes\eyes5b.png" />
+    <Content Include="Assets\Resources\Eyes\eyes6.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
