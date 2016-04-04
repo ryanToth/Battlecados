@@ -237,7 +237,7 @@ namespace Assets.Networking
                 // Update user cards
                 foreach (int cardID in cardCollection)
                 {
-                    string cardsql = "INSERT INTO UserCards (userID, cardID) VALUES ('" + userCode + "', '" + cardID + "')";
+                    string cardsql = "INSERT INTO UserCards (userID, cardID) VALUES (" + userCode + ", " + cardID + ")";
                     MySqlCommand newCard = new MySqlCommand(cardsql, conn);
                     newCard.ExecuteNonQuery();
                 }
@@ -256,13 +256,32 @@ namespace Assets.Networking
 
         public static bool TryEquipCardToAvocado(int userCode, int cardID)
         {
-            bool success = true;
+            // Remove **First instance** from UserCards, insert into AvocadoCards
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string usersql = "DELETE FROM UserCards WHERE userID = " + userCode + ", cardID = " + cardID;
+                MySqlCommand usercmd = new MySqlCommand(usersql, conn);
+                usercmd.ExecuteNonQuery();
+                string cadosql = "INSERT INTO AvocadoCards (avocadoID, cardID) VALUES (" + userCode + ", " + cardID + ")";
+                MySqlCommand cadocmd = new MySqlCommand(cadosql, conn);
+                cadocmd.ExecuteNonQuery();
+                success = true;
+                DatabaseDisconnect(conn);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
 
             return success;
         }
 
-        public static bool TryUnquipCardToAvocado(int userCode, int cardID)
+        public static bool TryUnequipCardToAvocado(int userCode, int cardID)
         {
+            // Remove **First instance ** from AvocadoCards, insert into UserCards
             bool success = true;
 
             return success;
