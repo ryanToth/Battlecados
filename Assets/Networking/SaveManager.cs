@@ -223,7 +223,7 @@ namespace Assets.Networking
 
         // Attempts to save user info after a pack is opened, returns true if save was successful, false otherwise
         // Card collection is a list of card id's that the user has in their collection
-        public static bool TryOpenPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, IEnumerable<int> cardCollection)
+        public static bool TryOpenPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, IEnumerable<Card> cardCollection)
         {
             bool success = true;
 
@@ -237,7 +237,7 @@ namespace Assets.Networking
             return success;
         }
 
-        public static bool TryUnquipCardToAvocado(int userCode, int cardID)
+        public static bool TryUnequipCardToAvocado(int userCode, int cardID)
         {
             bool success = true;
 

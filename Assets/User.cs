@@ -312,7 +312,7 @@ public class User : MonoBehaviour {
         _avocado.EquipRightHandWeapon(card);
         Cards.Remove(card);
 
-        SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+        SaveManager.TryEquipCardToAvocado(_userCode, card.CardID);
     }
 
     public void EquipLeftHandWeapon(Card card)
@@ -322,7 +322,7 @@ public class User : MonoBehaviour {
         _avocado.EquipLeftHandWeapon(card);
         Cards.Remove(card);
 
-        SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+        SaveManager.TryEquipCardToAvocado(_userCode, card.CardID);
     }
 
     // Used to equip cards to avocados, except for one handed weapons, removes the card from the User's card collection so they cannot equip the same card multiple times
@@ -351,7 +351,7 @@ public class User : MonoBehaviour {
                 break;
         }
 
-        SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+        SaveManager.TryEquipCardToAvocado(_userCode, card.CardID);
     }
 
     // Unequips the card from the avocado and returns it to the User's card collection
@@ -362,7 +362,7 @@ public class User : MonoBehaviour {
         if (card != null)
         {
             Cards.Add(card);
-            SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+            SaveManager.TryUnequipCardToAvocado(_userCode, card.CardID);
         }
     }
 
@@ -374,7 +374,7 @@ public class User : MonoBehaviour {
         if (card != null)
         {
             Cards.Add(card);
-            SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+            SaveManager.TryUnequipCardToAvocado(_userCode, card.CardID);
         }
     }
 
@@ -402,7 +402,7 @@ public class User : MonoBehaviour {
         if (card != null)
         {
             Cards.Add(card);
-            SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+            SaveManager.TryUnequipCardToAvocado(_userCode, card.CardID);
         }
     }
 
@@ -414,7 +414,7 @@ public class User : MonoBehaviour {
         if (card != null)
         {
             Cards.Add(card);
-            SaveManager.TryUpdateAvococado(_userCode, _avocado, CardCollectionIDs);
+            SaveManager.TryUnequipCardToAvocado(_userCode, card.CardID);
         }
     }
 
@@ -427,7 +427,7 @@ public class User : MonoBehaviour {
             Cards.AddRange(newCards);
             _bronzePacks--;
 
-            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, newCards);
 
             return newCards;
         }
@@ -443,7 +443,7 @@ public class User : MonoBehaviour {
             Cards.AddRange(newCards);
             _silverPacks--;
 
-            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, newCards);
 
             return newCards;
         }
@@ -459,7 +459,7 @@ public class User : MonoBehaviour {
             Cards.AddRange(newCards);
             _goldPacks--;
 
-            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, CardCollectionIDs);
+            SaveManager.TryOpenPack(_userCode, _bronzePacks, _silverPacks, _goldPacks, newCards);
 
             return newCards;
         }
