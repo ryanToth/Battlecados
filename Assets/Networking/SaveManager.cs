@@ -223,7 +223,7 @@ namespace Assets.Networking
 
         // Attempts to save user info after a pack is opened, returns true if save was successful, false otherwise
         // Card collection is a list of card id's that the user has in their collection
-        public static bool TryOpenPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, IEnumerable<int> cardCollection)
+        public static bool TryOpenPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, IEnumerable<Card> cardCollection)
         {
             bool success = false;
             try
@@ -235,9 +235,9 @@ namespace Assets.Networking
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
                 // Update user cards
-                foreach (int cardID in cardCollection)
+                foreach (Card card in cardCollection)
                 {
-                    string cardsql = "INSERT INTO UserCards (userID, cardID) VALUES (" + userCode + ", " + cardID + ")";
+                    string cardsql = "INSERT INTO UserCards (userID, cardID) VALUES ('" + userCode + "', '" + card.CardID + "')";
                     MySqlCommand newCard = new MySqlCommand(cardsql, conn);
                     newCard.ExecuteNonQuery();
                 }
@@ -256,32 +256,13 @@ namespace Assets.Networking
 
         public static bool TryEquipCardToAvocado(int userCode, int cardID)
         {
-            // Remove **First instance** from UserCards, insert into AvocadoCards
-            bool success = false;
-            try
-            {
-                MySqlConnection conn = DatabaseConnect();
-                string usersql = "DELETE FROM UserCards WHERE userID = " + userCode + ", cardID = " + cardID;
-                MySqlCommand usercmd = new MySqlCommand(usersql, conn);
-                usercmd.ExecuteNonQuery();
-                string cadosql = "INSERT INTO AvocadoCards (avocadoID, cardID) VALUES (" + userCode + ", " + cardID + ")";
-                MySqlCommand cadocmd = new MySqlCommand(cadosql, conn);
-                cadocmd.ExecuteNonQuery();
-                success = true;
-                DatabaseDisconnect(conn);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                success = false;
-            }
+            bool success = true;
 
             return success;
         }
 
         public static bool TryUnequipCardToAvocado(int userCode, int cardID)
         {
-            // Remove **First instance ** from AvocadoCards, insert into UserCards
             bool success = true;
 
             return success;
