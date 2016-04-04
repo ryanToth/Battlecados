@@ -1,0 +1,22 @@
+{
+  "name": "Battlecados",
+  "version": "1.0.0",
+  "description": "Battlecados server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanToth/Battlecados.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanToth/Battlecados/issues"
+  },
+  "homepage": "https://github.com/ryanToth/Battlecados",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
