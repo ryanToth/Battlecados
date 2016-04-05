@@ -14,7 +14,7 @@ public class CardList : MonoBehaviour {
     void Start ()
     {
         user = GetCurrentInfo.User;
-        int max = 5;//user.Cards.Count;
+        int max = user.Cards.Count;
 
         for (int i = 0; i < max; i++)
         {

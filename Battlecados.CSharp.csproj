@@ -87,6 +87,7 @@
     <Compile Include="Assets\GoldPack.cs" />
     <Compile Include="Assets\LogIn\Scripts\LogIn.cs" />
     <Compile Include="Assets\MainMenu\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\ManageCards\Scripts\ManageCards.cs" />
     <Compile Include="Assets\Networking\SaveManager.cs" />
     <Compile Include="Assets\OnlineVersus\ConnectingScreen\Scripts\ConnectingScreen.cs" />
     <Compile Include="Assets\Pack.cs" />

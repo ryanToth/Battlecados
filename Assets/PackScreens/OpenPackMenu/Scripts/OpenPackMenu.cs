@@ -119,7 +119,7 @@ public class OpenPackMenu : MonoBehaviour
         {
             print("Back");
             //Go to Main Menu
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(11);
         }
 
         // Stat bar at the bottom of the screen
