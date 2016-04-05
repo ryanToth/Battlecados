@@ -28,6 +28,10 @@ public class StartScreen : MonoBehaviour {
 	float xCloud2 = 0;
 	float xCloud3 = 0;
 
+	void nextScreen(){
+		SceneManager.LoadScene(1);
+	}
+
     void OnGUI()
     {
         //Display our background texture     
@@ -73,7 +77,9 @@ public class StartScreen : MonoBehaviour {
         if (Event.current.type == EventType.KeyDown || Input.GetMouseButtonDown(0))
         {
 			anim.Play ("Transition");
+			//yield WaitForSeconds(2);
 			//SceneManager.LoadScene(1);
+			Invoke("nextScreen", 2.0f);
         }
     }
 
