@@ -81,7 +81,7 @@ public class MainMenu : MonoBehaviour {
         if (GUI.Button(new Rect(0, versusButtonY, firstTwoButtonsWidth, firstTwoButtonsHeight), "", versusButtonStyle))
         {
             print("Clicked Versus Button");
-            SceneManager.LoadScene(10);
+            SceneManager.LoadScene(9);
         }
 
         if (GUI.Button(new Rect(0, buyCardsButtonY, lastTwoButtonsWidth, lastTwoButtonsHeight), "", buyCardsButtonStyle))
@@ -93,7 +93,7 @@ public class MainMenu : MonoBehaviour {
         if (GUI.Button(new Rect(0, manageCardsButtonY, lastTwoButtonsWidth, lastTwoButtonsHeight), "", manageCardsButtonStyle))
         {
             print("Clicked Manage Cards Button");
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(11);
         }
 
         /*

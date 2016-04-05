@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace Assets.Card_Data
 {
-    class CardDatabase
+    public class CardDatabase
     {
         private IEnumerable<Card> _commonCards;
 
