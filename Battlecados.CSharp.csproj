@@ -74,6 +74,7 @@
     <Compile Include="Assets\BronzePack.cs" />
     <Compile Include="Assets\Card Data\CardDatabase.cs" />
     <Compile Include="Assets\Card.cs" />
+    <Compile Include="Assets\CardCollection\Scripts\AreYouSure.cs" />
     <Compile Include="Assets\CardCollection\Scripts\BackButton.cs" />
     <Compile Include="Assets\CardCollection\Scripts\CardCollection.cs" />
     <Compile Include="Assets\CardCollection\Scripts\CardList.cs" />
