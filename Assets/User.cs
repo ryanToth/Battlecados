@@ -231,7 +231,7 @@ public class User : MonoBehaviour {
             switch (type)
             {
                 case CardType.OneHandedWeapon:
-                    if (_avocado.RightHandWeapon != null)
+                    if (_avocado.RightHandWeapon == null)
                     {
                         _avocado.EquipRightHandWeapon(card);
                     }
@@ -346,20 +346,32 @@ public class User : MonoBehaviour {
 
     public void EquipRightHandWeapon(Card card)
     {
-        if (card.CardType != CardType.OneHandedWeapon) return;
+        if (card.CardType != CardType.OneHandedWeapon && card.CardType != CardType.TwoHandedWeapon) return;
 
-        _avocado.EquipRightHandWeapon(card);
+        Card returnedCard = _avocado.EquipRightHandWeapon(card);
         Cards.Remove(card);
+
+        if (returnedCard != null)
+        {
+            Cards.Add(returnedCard);
+            SaveManager.TryUnequipCardToAvocado(_userCode, returnedCard.CardID);
+        }
 
         SaveManager.TryEquipCardToAvocado(_userCode, card.CardID);
     }
 
     public void EquipLeftHandWeapon(Card card)
     {
-        if (card.CardType != CardType.OneHandedWeapon) return;
+        if (card.CardType != CardType.OneHandedWeapon && card.CardType != CardType.TwoHandedWeapon) return;
 
-        _avocado.EquipLeftHandWeapon(card);
+        Card returnedCard = _avocado.EquipLeftHandWeapon(card);
         Cards.Remove(card);
+
+        if (returnedCard != null)
+        {
+            Cards.Add(returnedCard);
+            SaveManager.TryUnequipCardToAvocado(_userCode, returnedCard.CardID);
+        }
 
         SaveManager.TryEquipCardToAvocado(_userCode, card.CardID);
     }
@@ -367,27 +379,46 @@ public class User : MonoBehaviour {
     // Used to equip cards to avocados, except for one handed weapons, removes the card from the User's card collection so they cannot equip the same card multiple times
     public void EquipCardToAvocado(Card card)
     {
+        Card returnedCard = null;
+        List<Card> listOfCards = null;
+
         switch (card.CardType)
         {
             case CardType.TwoHandedWeapon:
 
-                if (Cards.Remove(card)) _avocado.EquipTwoHandWeapon(card);
+                if (Cards.Remove(card)) listOfCards = _avocado.EquipTwoHandWeapon(card);
                 break;
 
             case CardType.HeadArmor:
 
-                if (Cards.Remove(card)) _avocado.EquipHeadArmor(card);
+                if (Cards.Remove(card)) returnedCard = _avocado.EquipHeadArmor(card);
                 break;
 
             case CardType.ChestArmor:
 
-                if (Cards.Remove(card)) _avocado.EquipChestArmor(card);
+                if (Cards.Remove(card)) returnedCard = _avocado.EquipChestArmor(card);
                 break;
 
             case CardType.Support:
 
                 if (_avocado.TryEquipSupportCard(card)) Cards.Remove(card);
                 break;
+        }
+
+        if (returnedCard != null)
+        {
+            Cards.Add(returnedCard);
+            SaveManager.TryUnequipCardToAvocado(_userCode, returnedCard.CardID);
+        }
+
+        if (listOfCards != null)
+        {
+            Cards.AddRange(listOfCards);
+
+            foreach (var thing in listOfCards)
+            {
+                SaveManager.TryUnequipCardToAvocado(_userCode, thing.CardID);
+            }
         }
 
         SaveManager.TryEquipCardToAvocado(_userCode, card.CardID);

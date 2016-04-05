@@ -111,7 +111,7 @@ namespace Assets.Networking
             while (cadocard_rdr.Read())
             {
                 cadocardID = Convert.ToInt32(cadocard_rdr[0]);
-                cadocardList.Add(cardID);
+                cadocardList.Add(cadocardID);
             }
             cadocard_rdr.Close();
             DatabaseDisconnect(conn);

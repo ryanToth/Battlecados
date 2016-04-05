@@ -50,7 +50,7 @@
 
   <card>
     <id>5</id>
-    <cardType>1</cardType>
+    <cardType>0</cardType>
     <name>Homerun Bat</name>
     <flavourText>Kerschwing</flavourText>
     <attack>10</attack>

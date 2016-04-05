@@ -2,7 +2,7 @@
 <cards>
   <card>
     <id>1000</id>
-    <cardType>1</cardType>
+    <cardType>0</cardType>
     <name>Staff of Smiting</name>
     <flavourText>He's a cooking a something up</flavourText>
     <attack>15</attack>

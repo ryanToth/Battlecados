@@ -133,13 +133,13 @@ public class ManageCards : MonoBehaviour {
 
             labels[0].text = cards[i].Name;
             //Attack
-            labels[1].text = "Attack:" + cards[i].AttackEffect.ToString();
+            labels[1].text = "A:  " + cards[i].AttackEffect.ToString();
             //Defence
-            labels[2].text = "Defence:" + cards[i].DefenceEffect.ToString();
+            labels[2].text = "D:  " + cards[i].DefenceEffect.ToString();
             //Health
-            labels[3].text = "Health:" + cards[i].HealthEffect.ToString();
+            labels[3].text = "H:  " + cards[i].HealthEffect.ToString();
             //Speed
-            labels[4].text = "Speed:" + cards[i].SpeedEffect.ToString();
+            labels[4].text = "S:  " + cards[i].SpeedEffect.ToString();
 
             newItem.transform.parent = gameList.transform.FindChild("CardList").transform.FindChild("Grid").transform;
         }
@@ -280,6 +280,16 @@ public class ManageCards : MonoBehaviour {
                 GameObject.Find("SupportImage" + (i + 1).ToString()).GetComponent<Image>().sprite = Resources.Load("Cards/" + user.Avocado.SupportCards[i].CardID.ToString(), typeof(Sprite)) as Sprite;
             }
         }
+
+        var attack = GameObject.Find("AttackLabel").GetComponent<Text>();
+        var defence = GameObject.Find("DefenceLabel").GetComponent<Text>();
+        var health = GameObject.Find("HealthLabel").GetComponent<Text>();
+        var speed = GameObject.Find("SpeedLabel").GetComponent<Text>();
+
+        attack.text = "Attack: " + user.Avocado.Attack;
+        defence.text = "Defence: " + user.Avocado.Defence;
+        health.text = "Health: " + user.Avocado.MaxHealth;
+        speed.text = "Speed: " + user.Avocado.Speed;
     }
 
 	// Update is called once per frame

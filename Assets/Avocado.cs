@@ -290,7 +290,7 @@ public class Avocado {
         Card cardToReturn = null;
 
         // If the card is not a one handed weapon, do not equip it
-        if (weapon.CardType != CardType.OneHandedWeapon) return null;
+        if (weapon.CardType != CardType.OneHandedWeapon && weapon.CardType != CardType.TwoHandedWeapon) return null;
 
         if (_twoHandedWeapon != null) cardToReturn = UnequipTwoHandedWeapon();
         if (_rightHandWeapon != null) cardToReturn = UnequipRightHandWeapon();
@@ -306,7 +306,7 @@ public class Avocado {
         Card cardToReturn = null;
 
         // If the card is not a one handed weapon, do not equip it
-        if (weapon.CardType != CardType.OneHandedWeapon) return null;
+        if (weapon.CardType != CardType.OneHandedWeapon && weapon.CardType != CardType.TwoHandedWeapon) return null;
 
         if (_twoHandedWeapon != null) cardToReturn = UnequipTwoHandedWeapon();
         if (_leftHandWeapon != null) cardToReturn = UnequipLeftHandWeapon();
