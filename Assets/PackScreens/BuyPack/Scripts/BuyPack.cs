@@ -105,7 +105,7 @@ public class BuyPack : MonoBehaviour {
             //Go to Main Menu
             SceneManager.LoadScene(2);
         }
-
+        //test
         // Stat bar at the bottom of the screen
         GUI.Label(new Rect(userLevelX, userLevelY, userLevelWidth, userLevelHeight), "Lvl. " + userLevel.ToString(), statBarStyle);
         GUI.Label(new Rect(userLevelX + userLevelWidth, userLevelY, Screen.width - userLevelWidth, userLevelHeight), "Experience To Next Level: " + experienceToNextLevel.ToString(), statBarStyle);
