@@ -71,13 +71,13 @@ public class StoryMenu : MonoBehaviour {
         GUI.Label(new Rect(enemyNameX, enemyNameY, enemyNameWidth, enemyHeight), enemyName + " Wants to Battle!", enemyNameStyle);
 
         // Start Battle Button
-        if (GUI.Button(new Rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight), "Start Battle"))
+        if (GUI.Button(new Rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight), "", startButtonStyle))
         {
             StartButtonPressed();
         }
 
         // Back Button
-        if (GUI.Button(new Rect(backButtonX, backButtonY, backButtonWidth, backButtonHeight), "Back"))
+        if (GUI.Button(new Rect(backButtonX, backButtonY, backButtonWidth, backButtonHeight), "", backButtonStyle))
         {
             BackButtonPressed();
         }
@@ -105,7 +105,7 @@ public class StoryMenu : MonoBehaviour {
         storyLevelLabelHeight = Screen.height * 0.05f;
 
         storyLevelLabelStyle.fontSize = (int)(Screen.width * 0.075f);
-        enemyNameStyle.fontSize = (int)(Screen.width * 0.075f);
+        //enemyNameStyle.fontSize = (int)(Screen.width * 0.075f);
 
         enemyNameWidth = storyLevelLabelWidth;
         enemyNameHeight = storyLevelLabelHeight;
@@ -124,7 +124,7 @@ public class StoryMenu : MonoBehaviour {
         userLevelWidth = Screen.width * 0.25f;
         userLevelHeight = Screen.width - userLevelY;
 
-        statBarStyle.fontSize = (int)(Screen.width * 0.05);
+        //statBarStyle.fontSize = (int)(Screen.width * 0.05);
     }
 
     public void StartButtonPressed()
@@ -151,7 +151,7 @@ public class StoryMenu : MonoBehaviour {
         eyes.eyes = Random.Range(1,7);
 
         // Name will be randomly generated
-        enemyName = "Phil";
+        enemyName = "";
 
         enemyToFight = Resources.Load("base cado", typeof(Texture)) as Texture;
         enemyEyes = Resources.Load("Eyes/eyes" + eyes.eyes.ToString(), typeof(Texture)) as Texture;

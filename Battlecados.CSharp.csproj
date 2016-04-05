@@ -74,7 +74,6 @@
     <Compile Include="Assets\BronzePack.cs" />
     <Compile Include="Assets\Card Data\CardDatabase.cs" />
     <Compile Include="Assets\Card.cs" />
-    <Compile Include="Assets\CardCollection\Scripts\AreYouSure.cs" />
     <Compile Include="Assets\CardCollection\Scripts\BackButton.cs" />
     <Compile Include="Assets\CardCollection\Scripts\CardCollection.cs" />
     <Compile Include="Assets\CardCollection\Scripts\CardList.cs" />
@@ -87,7 +86,6 @@
     <Compile Include="Assets\GoldPack.cs" />
     <Compile Include="Assets\LogIn\Scripts\LogIn.cs" />
     <Compile Include="Assets\MainMenu\Scripts\MainMenu.cs" />
-    <Compile Include="Assets\ManageCards\Scripts\ManageCards.cs" />
     <Compile Include="Assets\Networking\SaveManager.cs" />
     <Compile Include="Assets\OnlineVersus\ConnectingScreen\Scripts\ConnectingScreen.cs" />
     <Compile Include="Assets\Pack.cs" />
