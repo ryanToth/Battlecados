@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour {
     public GUIStyle buyCardsButtonStyle;
     public GUIStyle manageCardsButtonStyle;
 
+
     /*
     float pointerFingerY;
     public float pointerFingerWidth;
@@ -64,8 +65,6 @@ public class MainMenu : MonoBehaviour {
         userLevelY = Screen.height * 0.965f;
         userLevelWidth = Screen.width * 0.25f;
         userLevelHeight = Screen.width - userLevelY;
-
-        statBarStyle.fontSize = (int)(Screen.width * 0.05);
 
         experienceToNextLevel = user.Avocado.ExperiencePointsToNextLevel;
 
