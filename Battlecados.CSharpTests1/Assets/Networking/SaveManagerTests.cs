@@ -87,5 +87,64 @@ namespace Assets.Networking.Tests
             // Assert
             Assert.IsTrue(result);
         }
+
+        /*[TestMethod()]
+        public void TryOpenPackTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int numberOfBronzePacks = 5;
+            int numberOfSilverPacks = 3;
+            int numberOfGoldPacks = 2;
+            List<Card> cardCollection = new List<Card>(new Card[] { 1, 2, 3 });
+            // Act
+            bool result = SaveManager.TryOpenPack(userCode, numberOfBronzePacks, numberOfSilverPacks, numberOfGoldPacks, cardCollection);
+
+            // Assert
+            Assert.IsTrue(result);
+        }*/
+
+        [TestMethod()]
+        public void TryEquipCardToAvocadoTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int cardID = 1;
+
+            // Act
+            bool result = SaveManager.TryEquipCardToAvocado(userCode, cardID);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod()]
+        public void TryUnequipCardToAvocadoTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int cardID = 1;
+
+            // Act
+            bool result = SaveManager.TryUnequipCardToAvocado(userCode, cardID);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod()]
+        public void TrySellCardTest()
+        {
+            // Arrange
+            int userCode = 50;
+            int cardID = 1;
+            int gold = 700;
+
+            // Act
+            bool result = SaveManager.TrySellCard(userCode, gold, cardID);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
     }
 }

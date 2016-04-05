@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour {
     public GUIStyle buyCardsButtonStyle;
     public GUIStyle manageCardsButtonStyle;
 
+
     /*
     float pointerFingerY;
     public float pointerFingerWidth;
@@ -65,8 +66,6 @@ public class MainMenu : MonoBehaviour {
         userLevelWidth = Screen.width * 0.25f;
         userLevelHeight = Screen.width - userLevelY;
 
-        statBarStyle.fontSize = (int)(Screen.width * 0.05);
-
         experienceToNextLevel = user.Avocado.ExperiencePointsToNextLevel;
 
         //Display our background texture
@@ -81,7 +80,7 @@ public class MainMenu : MonoBehaviour {
         if (GUI.Button(new Rect(0, versusButtonY, firstTwoButtonsWidth, firstTwoButtonsHeight), "", versusButtonStyle))
         {
             print("Clicked Versus Button");
-            SceneManager.LoadScene(10);
+            SceneManager.LoadScene(9);
         }
 
         if (GUI.Button(new Rect(0, buyCardsButtonY, lastTwoButtonsWidth, lastTwoButtonsHeight), "", buyCardsButtonStyle))
@@ -93,7 +92,7 @@ public class MainMenu : MonoBehaviour {
         if (GUI.Button(new Rect(0, manageCardsButtonY, lastTwoButtonsWidth, lastTwoButtonsHeight), "", manageCardsButtonStyle))
         {
             print("Clicked Manage Cards Button");
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(11);
         }
 
         /*

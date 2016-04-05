@@ -99,7 +99,7 @@ public class BuyPack : MonoBehaviour {
         GUI.Label(new Rect(userGoldX, userGoldY, userGoldWidth, userGoldHeight), userGoldText + userGold.ToString(), userGoldStyle);
 
         // Back Button
-        if (GUI.Button(new Rect(backX, backY, backWidth, backHeight), "Back"))
+        if (GUI.Button(new Rect(backX, backY, backWidth, backHeight), "Back", backStyle))
         {
             print("Back");
             //Go to Main Menu
@@ -155,7 +155,7 @@ public class BuyPack : MonoBehaviour {
         userLevelWidth = Screen.width * 0.25f;
         userLevelHeight = Screen.width - userLevelY;
 
-        statBarStyle.fontSize = (int)(Screen.width * 0.05);
+        //statBarStyle.fontSize = (int)(Screen.width * 0.05);
 
         experienceToNextLevel = user.Avocado.ExperiencePointsToNextLevel;
 

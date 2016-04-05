@@ -88,13 +88,40 @@ namespace Assets.Networking
                 supportCards = Convert.ToInt32(cado_rdr[8]);
             }
             cado_rdr.Close();
+
+            // UserCards database work
+            string card_sql = "SELECT cardID FROM UserCards WHERE userID = " + userCode;
+            MySqlCommand card_cmd = new MySqlCommand(card_sql, conn);
+            MySqlDataReader card_rdr = card_cmd.ExecuteReader();
+            List<int> cardList = new List<int>();
+            int cardID = 0;
+            while (card_rdr.Read())
+            {
+                cardID = Convert.ToInt32(card_rdr[0]);
+                cardList.Add(cardID);
+            }
+            card_rdr.Close();
+
+            // AvocadoCards database work
+            string cadocard_sql = "SELECT cardID FROM AvocadoCards WHERE avocadoID = " + userCode;
+            MySqlCommand cadocard_cmd = new MySqlCommand(cadocard_sql, conn);
+            MySqlDataReader cadocard_rdr = cadocard_cmd.ExecuteReader();
+            List<int> cadocardList = new List<int>();
+            int cadocardID = 0;
+            while (cadocard_rdr.Read())
+            {
+                cadocardID = Convert.ToInt32(cadocard_rdr[0]);
+                cadocardList.Add(cardID);
+            }
+            cadocard_rdr.Close();
             DatabaseDisconnect(conn);
             //public Avocado(int level, int experiencePoints, Card rightHandedWeapon, Card leftHandedWeapon, Card twoHandedWeapon,
                 //Card headArmor, Card chestArmor, List<Card> supportCards)
+
             Avocado cado = new Avocado(level, experiencePoints, null, null, null, null, null, null);
 
             //public User(string username, int userCode, int gold, int bronzePacks, int silverPacks, int goldPacks, int storyLevel, Avocado avocado)
-            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, cado);
+            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, cado, cardList, cadocardList);
 
             return found;
         }
@@ -146,7 +173,8 @@ namespace Assets.Networking
             newAvocado.ExecuteNonQuery();
 
             // Creating user
-            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado());
+            List<int> empty = new List<int>();
+            user.SetValues(username, userCode, gold, bronzePacks, silverPacks, goldPacks, storyLevel, new Avocado(), empty, empty);
 
             DatabaseDisconnect(conn);
 
@@ -220,29 +248,107 @@ namespace Assets.Networking
 
             return success;
         }
+        // Attempts to save user info after a card is sold, returns true if successful, false otherwise
+        public static bool TrySellCard(int userCode, int gold, int cardID)
+        {
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string sql = "UPDATE User SET gold=" + gold + " WHERE userCode=" + userCode;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                string cardsql = "DELETE FROM UserCards WHERE userID = " + userCode + " AND cardID = " + cardID + " LIMIT 1;";
+                MySqlCommand cardcmd = new MySqlCommand(cardsql, conn);
+                cardcmd.ExecuteNonQuery();
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
 
+            return success;
+        }
         // Attempts to save user info after a pack is opened, returns true if save was successful, false otherwise
         // Card collection is a list of card id's that the user has in their collection
-        public static bool TryOpenPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, IEnumerable<int> cardCollection)
+        public static bool TryOpenPack(int userCode, int numberOfBronzePacks, int numberOfSilverPacks, int numberOfGoldPacks, IEnumerable<Card> cardCollection)
         {
-            bool success = true;
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                // Update user card packs
+                string sql = "UPDATE User SET bronzePacks=" + numberOfBronzePacks + ", silverPacks=" + numberOfSilverPacks
+                    + ", goldPacks=" + numberOfGoldPacks + " WHERE userCode=" + userCode;
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                // Update user cards
+                foreach (Card card in cardCollection)
+                {
+                    string cardsql = "INSERT INTO UserCards (userID, cardID) VALUES ('" + userCode + "', '" + card.CardID + "')";
+                    MySqlCommand newCard = new MySqlCommand(cardsql, conn);
+                    newCard.ExecuteNonQuery();
+                }
+                
+                success = true;
+                DatabaseDisconnect(conn);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
 
             return success;
         }
 
-        // Anytime a card is equipped or unequipped from an Avocado, the result needs to be saved, return true if save was successful, false otherwise
-        public static bool TryUpdateAvococado(int userCode, Avocado avocado, IEnumerable<int> cardCollection)
+        public static bool TryEquipCardToAvocado(int userCode, int cardID)
         {
-            bool success = true;
-
+            // Remove **First instance** from UserCards, insert into AvocadoCards
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string usersql = "DELETE FROM UserCards WHERE userID = " + userCode + " AND cardID = " + cardID + " LIMIT 1;";
+                MySqlCommand usercmd = new MySqlCommand(usersql, conn);
+                usercmd.ExecuteNonQuery();
+                string cadosql = "INSERT INTO AvocadoCards (avocadoID, cardID) VALUES (" + userCode + ", " + cardID + ")";
+                MySqlCommand cadocmd = new MySqlCommand(cadosql, conn);
+                cadocmd.ExecuteNonQuery();
+                success = true;
+                DatabaseDisconnect(conn);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+             }
             return success;
         }
 
-        // Attempts to save user info after a card is sold, returns true if successful, false otherwise
-        public static bool TrySellCard(int userCode, int gold, IEnumerable<int> cardCollection)
+        public static bool TryUnequipCardToAvocado(int userCode, int cardID)
         {
-            bool success = true;
-
+            // Remove **First instance** from AvocadoCards, insert into UserCards
+            bool success = false;
+            try
+            {
+                MySqlConnection conn = DatabaseConnect();
+                string usersql = "DELETE FROM AvocadoCards WHERE avocadoID = " + userCode + " AND cardID = " + cardID + " LIMIT 1;";
+                MySqlCommand usercmd = new MySqlCommand(usersql, conn);
+                usercmd.ExecuteNonQuery();
+                string cadosql = "INSERT INTO UserCards (userID, cardID) VALUES (" + userCode + ", " + cardID + ")";
+                MySqlCommand cadocmd = new MySqlCommand(cadosql, conn);
+                cadocmd.ExecuteNonQuery();
+                success = true;
+                DatabaseDisconnect(conn);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                success = false;
+            }
             return success;
         }
 

@@ -26,6 +26,11 @@ public class CreateAccount : MonoBehaviour {
     public string userNameInput = "";
     public string passwordInput = "";
 
+    public GUIStyle labelStyle;
+    public GUIStyle createacctStyle;
+    public GUIStyle backStyle;
+    public GUIStyle inputStyle;
+
     public Texture backgroundTexture;
 
     public void OnGUI()
@@ -54,18 +59,18 @@ public class CreateAccount : MonoBehaviour {
 
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 
-        GUI.Label(new Rect(createUsernameX, usernameLabelY, createUsernameWidth, createUsernameHeight), "Username:");
-        userNameInput = GUI.TextField(new Rect(createUsernameX, createUsernameY, createUsernameWidth, createUsernameHeight), userNameInput, 9);
+        GUI.Label(new Rect(createUsernameX, usernameLabelY, createUsernameWidth, createUsernameHeight), "Username:", labelStyle);
+        userNameInput = GUI.TextField(new Rect(createUsernameX, createUsernameY, createUsernameWidth, createUsernameHeight), userNameInput, 15, inputStyle);
 
-        GUI.Label(new Rect(createPasswordX, passwordLabelY, createPasswordWidth, createPasswordHeight), "Password:");
-        passwordInput = GUI.TextField(new Rect(createPasswordX, createPasswordY, createPasswordWidth, createPasswordHeight), passwordInput, 9);
+        GUI.Label(new Rect(createPasswordX, passwordLabelY, createPasswordWidth, createPasswordHeight), "Password:", labelStyle);
+        passwordInput = GUI.TextField(new Rect(createPasswordX, createPasswordY, createPasswordWidth, createPasswordHeight), passwordInput, 15, inputStyle);
 
-        if (GUI.Button(new Rect(createButtonX, createButtonY, createButtonWidth, createButtonHeight), "Create Account"))
+        if (GUI.Button(new Rect(createButtonX, createButtonY, createButtonWidth, createButtonHeight), "", createacctStyle))
         {
             CreateNewAccount();
         }
 
-        if (GUI.Button(new Rect(CommonElementSizes.backX, CommonElementSizes.backY, CommonElementSizes.backWidth, CommonElementSizes.backHeight), "Back"))
+        if (GUI.Button(new Rect(CommonElementSizes.backX, CommonElementSizes.backY, CommonElementSizes.backWidth, CommonElementSizes.backHeight), "", backStyle))
         {
             SceneManager.LoadScene(1);
         }
