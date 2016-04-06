@@ -115,7 +115,7 @@ public class OpenPackMenu : MonoBehaviour
         GUI.Label(new Rect(packX, quantityLabelY + goldY + packHeight, packWidth, quantityLabelHeight), numGoldPacks.ToString(), quantityLabelStyle);
 
         // Back Button
-        if (GUI.Button(new Rect(backX, backY, backWidth, backHeight), "Back"))
+        if (GUI.Button(new Rect(backX, backY, backWidth, backHeight), "", backStyle))
         {
             print("Back");
             //Go to Main Menu

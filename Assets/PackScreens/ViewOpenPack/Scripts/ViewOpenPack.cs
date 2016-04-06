@@ -42,8 +42,10 @@ public class ViewOpenPack : MonoBehaviour {
     public float prevButtonX;
     public float buttonWidth;
     public float buttonHeight;
+    public GUIStyle nextStyle;
+    public GUIStyle prevStyle;
 
-    public string nextButtonText = "Next";
+    public string nextButtonText = "";
 
     void OnGUI()
     {
@@ -89,18 +91,21 @@ public class ViewOpenPack : MonoBehaviour {
 
         if (currentIndex != 0)
         {
-            if (GUI.Button(new Rect(prevButtonX, buttonY, buttonWidth, buttonHeight), "Previous"))
+
+            if (GUI.Button(new Rect(prevButtonX, buttonY, buttonWidth, buttonHeight), "", prevStyle))
             {
                 if (currentIndex == cards.Count-1)
                 {
-                    nextButtonText = "Next";
+                    //nextButtonText = "Next";
+                    nextStyle.normal.background = Resources.Load("next", typeof(Texture2D)) as Texture2D;
+                    nextStyle.hover.background = Resources.Load("nexthover", typeof(Texture2D)) as Texture2D;
                 }
 
                 currentIndex--;
             }
         }
 
-        if (GUI.Button(new Rect(nextButtonX, buttonY, buttonWidth, buttonHeight), nextButtonText))
+        if (GUI.Button(new Rect(nextButtonX, buttonY, buttonWidth, buttonHeight), nextButtonText, nextStyle))
         {
             if (currentIndex == cards.Count-1)
             {
@@ -110,10 +115,13 @@ public class ViewOpenPack : MonoBehaviour {
             else
             {
                 currentIndex++;
+                nextStyle.hover.background = Resources.Load("nexthover", typeof(Texture2D)) as Texture2D;
 
                 if (currentIndex == cards.Count-1)
                 {
-                    nextButtonText = "Done";
+                    //nextButtonText = "Done";
+                    nextStyle.normal.background = Resources.Load("done", typeof(Texture2D)) as Texture2D;
+                    nextStyle.hover.background = Resources.Load("donehover", typeof(Texture2D)) as Texture2D;
                 }
             }
         }
