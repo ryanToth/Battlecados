@@ -43,7 +43,7 @@
     <flavourText>Rock</flavourText>
     <attack>30</attack>
     <defence>0</defence>
-    <speed></speed>
+    <speed>0</speed>
     <health>0</health>
     <salvageValue>71</salvageValue>
   </card>
