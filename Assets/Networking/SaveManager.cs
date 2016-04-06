@@ -110,6 +110,7 @@ namespace Assets.Networking
             int cadocardID = 0;
             while (cadocard_rdr.Read())
             {
+				var thing = cadocard_rdr [0];
                 cadocardID = Convert.ToInt32(cadocard_rdr[0]);
                 cadocardList.Add(cadocardID);
             }
