@@ -153,7 +153,7 @@ public class ViewOpenPack : MonoBehaviour {
         statWidth = cardWidth;
         statHeight = cardHeight * 0.075f;
 
-        statStyle.fontSize = (int)(Screen.width * (1 / 19.0f));
+        statStyle.fontSize = (int)(Screen.width * (1 / 22.0f));
 
         buttonY = cardY + cardHeight + Screen.height * 0.05f;
         buttonHeight = Screen.height * 0.075f;

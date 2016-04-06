@@ -164,13 +164,13 @@ public class ManageCards : MonoBehaviour {
 
 			textlLabels [0].text = currentlyEquippedCard.Name;
 			//Attack
-			textlLabels [1].text = "Atk:  " + currentlyEquippedCard.AttackEffect.ToString ();
+			textlLabels [1].text = "Atk: " + currentlyEquippedCard.AttackEffect.ToString ();
 			//Defence
-			textlLabels [2].text = "Def:  " + currentlyEquippedCard.DefenceEffect.ToString ();
+			textlLabels [2].text = "Def: " + currentlyEquippedCard.DefenceEffect.ToString ();
 			//Health
-			textlLabels [3].text = "H/P:  " + currentlyEquippedCard.HealthEffect.ToString ();
+			textlLabels [3].text = "H/P: " + currentlyEquippedCard.HealthEffect.ToString ();
 			//Speed
-			textlLabels [4].text = "Spd:  " + currentlyEquippedCard.SpeedEffect.ToString ();
+			textlLabels [4].text = "Spd: " + currentlyEquippedCard.SpeedEffect.ToString ();
 
 			equippedCell.transform.SetParent(gameObject.transform, false);
 		}
@@ -187,13 +187,13 @@ public class ManageCards : MonoBehaviour {
 
             labels[0].text = cards[i].Name;
             //Attack
-            labels[1].text = "Atk:  " + cards[i].AttackEffect.ToString();
+            labels[1].text = "Atk: " + cards[i].AttackEffect.ToString();
             //Defence
-            labels[2].text = "Def:  " + cards[i].DefenceEffect.ToString();
+            labels[2].text = "Def: " + cards[i].DefenceEffect.ToString();
             //Health
-            labels[3].text = "H/P:  " + cards[i].HealthEffect.ToString();
+            labels[3].text = "H/P: " + cards[i].HealthEffect.ToString();
             //Speed
-            labels[4].text = "Spd:  " + cards[i].SpeedEffect.ToString();
+            labels[4].text = "Spd: " + cards[i].SpeedEffect.ToString();
 
             newItem.transform.parent = gameList.transform.FindChild("CardList").transform.FindChild("Grid").transform;
         }

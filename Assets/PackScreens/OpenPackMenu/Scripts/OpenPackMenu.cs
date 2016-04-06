@@ -175,7 +175,7 @@ public class OpenPackMenu : MonoBehaviour
 
         experienceToNextLevel = user.Avocado.ExperiencePointsToNextLevel;
 
-        statBarStyle.fontSize = (int)(Screen.width * 0.05);
+        //statBarStyle.fontSize = (int)(Screen.width * 0.05);
     }
 }
 
