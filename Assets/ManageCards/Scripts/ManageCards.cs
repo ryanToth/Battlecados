@@ -16,6 +16,31 @@ public class ManageCards : MonoBehaviour {
 	public GameObject equippedCell;
     public int activeCardType;
 
+	public int userLevel;
+	public float userLevelX;
+	public float userLevelY;
+	public float userLevelWidth;
+	public float userLevelHeight;
+	public int experienceToNextLevel;
+
+	public GUIStyle statBarStyle;
+
+	void OnGUI() 
+	{
+		userLevel = user.Avocado.Level;
+
+		userLevelX = 0;
+		userLevelY = Screen.height * 0.965f;
+		userLevelWidth = Screen.width * 0.25f;
+		userLevelHeight = Screen.width - userLevelY;
+
+		experienceToNextLevel = user.Avocado.ExperiencePointsToNextLevel;
+
+		// Stat bar at the bottom of the screen
+		GUI.Label(new Rect(userLevelX, userLevelY, userLevelWidth, userLevelHeight), "Lvl. " + userLevel.ToString(), statBarStyle);
+		GUI.Label(new Rect(userLevelX + userLevelWidth, userLevelY, Screen.width - userLevelWidth, userLevelHeight), "Experience To Next Level: " + experienceToNextLevel.ToString(), statBarStyle);
+	}
+
     public void HeadClick()
     {
         activeCardType = 0;
