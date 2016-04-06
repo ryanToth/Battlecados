@@ -23,4 +23,28 @@
     <health>0</health>
     <salvageValue>420</salvageValue>
   </card>
+
+  <card>
+    <id>2002</id>
+    <cardType>4</cardType>
+    <name>Steven</name>
+    <flavourText>Hi</flavourText>
+    <attack>35</attack>
+    <defence>0</defence>
+    <speed>0</speed>
+    <health>10</health>
+    <salvageValue>115</salvageValue>
+  </card>
+
+  <card>
+    <id>2003</id>
+    <cardType>2</cardType>
+    <name>Capt'n Karl's Helmet</name>
+    <flavourText>Senators</flavourText>
+    <attack>0</attack>
+    <defence>15</defence>
+    <speed>15</speed>
+    <health>5</health>
+    <salvageValue>150</salvageValue>
+  </card>
 </cards>

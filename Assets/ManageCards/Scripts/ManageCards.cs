@@ -13,6 +13,7 @@ public class ManageCards : MonoBehaviour {
     public GameObject cardListPrefab;
     public GameObject cardPrefab;
     public GameObject gameList;
+	public GameObject equippedCell;
     public int activeCardType;
 
     public void HeadClick()
@@ -71,6 +72,8 @@ public class ManageCards : MonoBehaviour {
 
     public void ShowCardList(int typeOfCards)
     {
+		Destroy (equippedCell);
+
         if (gameList != null) Destroy(gameList);
 
         //create a new item, name it, and set the parent
@@ -80,22 +83,28 @@ public class ManageCards : MonoBehaviour {
 
         List<Card> cards = new List<Card>();
 
+		Card currentlyEquippedCard = null;
+
         switch (typeOfCards)
         {
             case 0:
                 //Head Armor
+				currentlyEquippedCard = user.Avocado.HeadArmor;
                 cards = new List<Card>(user.HeadArmorCards);
                 break;
             case 1:
                 //Chest Armor
+				currentlyEquippedCard = user.Avocado.ChestArmor;
                 cards = new List<Card>(user.ChestArmorCards);
                 break;
             case 2:
                 //Left Hand
+				currentlyEquippedCard = user.Avocado.LeftHandWeapon;
                 cards = new List<Card>(user.WeaponCards);
                 break;
             case 3:
                 //Right Hand
+				currentlyEquippedCard = user.Avocado.RightHandWeapon;
                 cards = new List<Card>(user.WeaponCards);
                 break;
             case 4:
@@ -121,6 +130,26 @@ public class ManageCards : MonoBehaviour {
                 break;
         }
 
+		if (currentlyEquippedCard != null) {
+			
+			equippedCell = Instantiate (cardPrefab) as GameObject;
+
+			equippedCell.name = currentlyEquippedCard.CardID.ToString ();
+			var textlLabels = equippedCell.GetComponentsInChildren<Text> ();
+
+			textlLabels [0].text = currentlyEquippedCard.Name;
+			//Attack
+			textlLabels [1].text = "Atk:  " + currentlyEquippedCard.AttackEffect.ToString ();
+			//Defence
+			textlLabels [2].text = "Def:  " + currentlyEquippedCard.DefenceEffect.ToString ();
+			//Health
+			textlLabels [3].text = "H/P:  " + currentlyEquippedCard.HealthEffect.ToString ();
+			//Speed
+			textlLabels [4].text = "Spd:  " + currentlyEquippedCard.SpeedEffect.ToString ();
+
+			equippedCell.transform.SetParent(gameObject.transform, false);
+		}
+
         int max = cards.Count;
 
         for (int i = 0; i < max; i++)
@@ -133,13 +162,13 @@ public class ManageCards : MonoBehaviour {
 
             labels[0].text = cards[i].Name;
             //Attack
-            labels[1].text = "A:  " + cards[i].AttackEffect.ToString();
+            labels[1].text = "Atk:  " + cards[i].AttackEffect.ToString();
             //Defence
-            labels[2].text = "D:  " + cards[i].DefenceEffect.ToString();
+            labels[2].text = "Def:  " + cards[i].DefenceEffect.ToString();
             //Health
-            labels[3].text = "H:  " + cards[i].HealthEffect.ToString();
+            labels[3].text = "H/P:  " + cards[i].HealthEffect.ToString();
             //Speed
-            labels[4].text = "S:  " + cards[i].SpeedEffect.ToString();
+            labels[4].text = "Spd:  " + cards[i].SpeedEffect.ToString();
 
             newItem.transform.parent = gameList.transform.FindChild("CardList").transform.FindChild("Grid").transform;
         }
@@ -200,6 +229,7 @@ public class ManageCards : MonoBehaviour {
 
         UpdateImages();
 
+		Destroy (equippedCell);
         Destroy(gameList);
     }
 
@@ -221,6 +251,7 @@ public class ManageCards : MonoBehaviour {
     public void cardListBack(GameObject sender)
     {
         Destroy(sender);
+		Destroy (equippedCell);
     }
 
 	// Use this for initialization

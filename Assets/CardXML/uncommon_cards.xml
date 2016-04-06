@@ -23,4 +23,28 @@
     <health>0</health>
     <salvageValue>60</salvageValue>
   </card>
+
+  <card>
+    <id>1002</id>
+    <cardType>3</cardType>
+    <name>The Jersey of Sid</name>
+    <flavourText>Gold gold gold</flavourText>
+    <attack>8</attack>
+    <defence>15</defence>
+    <speed>10</speed>
+    <health>0</health>
+    <salvageValue>160</salvageValue>
+  </card>
+
+  <card>
+    <id>1003</id>
+    <cardType>4</cardType>
+    <name>Dave</name>
+    <flavourText>Rock</flavourText>
+    <attack>30</attack>
+    <defence>0</defence>
+    <speed></speed>
+    <health>0</health>
+    <salvageValue>71</salvageValue>
+  </card>
 </cards>
