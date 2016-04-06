@@ -72,6 +72,8 @@ public class ManageCards : MonoBehaviour {
 
     public void ShowCardList(int typeOfCards)
     {
+		Destroy (equippedCell);
+
         if (gameList != null) Destroy(gameList);
 
         //create a new item, name it, and set the parent
@@ -227,6 +229,7 @@ public class ManageCards : MonoBehaviour {
 
         UpdateImages();
 
+		Destroy (equippedCell);
         Destroy(gameList);
     }
 
