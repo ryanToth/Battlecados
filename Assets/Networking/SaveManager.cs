@@ -164,7 +164,7 @@ namespace Assets.Networking
                 silverPacks = Convert.ToInt32(rdr[4]);
                 goldPacks = Convert.ToInt32(rdr[5]);
                 storyLevel = Convert.ToInt32(rdr[6]);
-                gold = Convert.ToInt64(rdr[7]);
+                gold = Convert.ToInt32(rdr[7]);
             }
             rdr.Close();
 
