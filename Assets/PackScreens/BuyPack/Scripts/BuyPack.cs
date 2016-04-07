@@ -48,6 +48,9 @@ public class BuyPack : MonoBehaviour {
 
     public GUIStyle statBarStyle;
 
+    AudioSources musicSources;
+    AudioSource music;
+
 
     // Temporary addition
     int userGold;
@@ -60,7 +63,7 @@ public class BuyPack : MonoBehaviour {
         SetRelativeComponentSizes();
 
         //Display our background texture     
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
+        //GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 
         // Bronze Pack button
         if (GUI.Button(new Rect(packX, bronzeY, packWidth, packHeight), "", bronzeStyle))
@@ -68,6 +71,7 @@ public class BuyPack : MonoBehaviour {
             user.BuyBronzePack(bronzePrice);
             userGold = user.Gold;
             print("Purchased Bronze Pack");
+            this.GetComponent<AudioSource>().Play();
         }
 
         // Bronze price label
@@ -79,6 +83,7 @@ public class BuyPack : MonoBehaviour {
             user.BuySilverPack(silverPrice);
             userGold = user.Gold;
             print("Purchased Silver Pack");
+            this.GetComponent<AudioSource>().Play();
         }
 
         // Silver price label
@@ -90,6 +95,7 @@ public class BuyPack : MonoBehaviour {
             user.BuyGoldPack(goldPrice);
             userGold = user.Gold;
             print("Purchased Gold Pack");
+            this.GetComponent<AudioSource>().Play();
         }
 
         // Gold price label
@@ -99,7 +105,7 @@ public class BuyPack : MonoBehaviour {
         GUI.Label(new Rect(userGoldX, userGoldY, userGoldWidth, userGoldHeight), userGoldText + userGold.ToString(), userGoldStyle);
 
         // Back Button
-        if (GUI.Button(new Rect(backX, backY, backWidth, backHeight), "Back", backStyle))
+        if (GUI.Button(new Rect(backX, backY, backWidth, backHeight), "", backStyle))
         {
             print("Back");
             //Go to Main Menu
@@ -121,6 +127,26 @@ public class BuyPack : MonoBehaviour {
         user = GetCurrentInfo.User;
 
         userGold = user.Gold;
+
+        this.GetComponent<AudioSource>().Play();
+
+        musicSources = GetCurrentInfo.AudioSources;
+        music = GetCurrentInfo.AudioSource;
+
+        music.Stop();
+
+        music.clip = musicSources.shop;
+
+        music.Play();
+    }
+
+    void OnDestroy()
+    {
+        music.Stop();
+
+        music.clip = musicSources.pops;
+
+        music.Play();
     }
 
     void SetRelativeComponentSizes()

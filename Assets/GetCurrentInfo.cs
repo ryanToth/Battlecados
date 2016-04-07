@@ -32,4 +32,25 @@ public class GetCurrentInfo {
             return gameObject.GetComponent<EnemyEyes>();
         }
     }
+
+    public static AudioSources AudioSources
+    {
+        get
+        {
+            var gameObject = GameObject.FindGameObjectWithTag("User");
+
+            return gameObject.GetComponent<AudioSources>();
+        }
+    }
+
+
+    public static AudioSource AudioSource
+    {
+        get
+        {
+            var gameObject = GameObject.FindGameObjectWithTag("User");
+
+            return gameObject.GetComponent<AudioSource>();
+        }
+    }
 }

@@ -52,7 +52,7 @@ public class OpenPackMenu : MonoBehaviour
         SetRelativeComponentSizes();
 
         //Display our background texture     
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
+        //GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), backgroundTexture);
 
         if (numBronzePacks > 0)
         {

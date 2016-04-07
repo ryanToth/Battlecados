@@ -79,7 +79,7 @@ public class StartScreen : MonoBehaviour {
 			anim.Play ("Transition");
 			//yield WaitForSeconds(2);
 			//SceneManager.LoadScene(1);
-			Invoke("nextScreen", 2.0f);
+			Invoke("nextScreen", 0.75f);
         }
     }
 
