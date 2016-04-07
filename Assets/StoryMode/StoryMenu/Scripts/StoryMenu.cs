@@ -129,7 +129,7 @@ public class StoryMenu : MonoBehaviour {
 
     public void StartButtonPressed()
     {
-
+        SceneManager.LoadScene(12);
     }
 
     public void BackButtonPressed()

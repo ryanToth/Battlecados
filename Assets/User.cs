@@ -276,7 +276,7 @@ public class User : MonoBehaviour {
         _gold += goldGained;
         _avocado.GainExperiencePoints(experienceGained);
 
-        SaveManager.TrySaveBattleResults(_userCode, _avocado.Level, _avocado.ExperiencePointsToNextLevel, _gold);
+        SaveManager.TrySaveBattleResults(_userCode, _avocado.Level, _avocado.ExperiencePoints, _gold);
     }
 
     // Returns true if pack was successfully purchased, false otherwise

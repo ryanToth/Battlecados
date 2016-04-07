@@ -129,6 +129,14 @@ public class Avocado {
     {
         get
         {
+            return EXP- ExperiencePoints;
+        }
+    }
+
+    private int EXP
+    {
+        get
+        {
             return _level * 150;
         }
     }
@@ -138,9 +146,9 @@ public class Avocado {
     {
         _experiencePoints += experience;
 
-        if (_experiencePoints >= ExperiencePointsToNextLevel)
+        if (_experiencePoints >= EXP)
         {
-            _experiencePoints -= ExperiencePointsToNextLevel;
+            _experiencePoints -= EXP;
             _level++;
 
             return true;

@@ -42,6 +42,9 @@ public class MainMenu : MonoBehaviour {
 
     public GUIStyle statBarStyle;
 
+    AudioSources musicSources;
+    AudioSource music;
+
     public User user;
 
     public int experienceToNextLevel;
@@ -115,6 +118,18 @@ public class MainMenu : MonoBehaviour {
     void Start()
     {
         user = GetCurrentInfo.User;
+
+        this.GetComponent<AudioSource>().Play();
+
+        musicSources = GetCurrentInfo.AudioSources;
+        music = GetCurrentInfo.AudioSource;
+
+        music.Stop();
+
+        music.clip = musicSources.pops;
+
+        music.Play();
+
     }
 
     public void Update()

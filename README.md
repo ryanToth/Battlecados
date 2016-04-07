@@ -22,3 +22,9 @@ The game's controls are point and click with a mouse
 7. Now you're ready to battle! Navigate back to the Main Menu and select "Story". We initially wanted to add an online component to the game and that is what the "Versus" button takes you to. However, that was a bit ambitious of us and we did not have time to implement it. For the mean time that button does not have a control attached to it so it does nothing.
 8. Once in battle you have two battle options, attack or use a support card. Attacking ends your turn and does damage to your opponent. Using a support card ends your turn and increase your stats.
 9. Once one of the players health is 0, the battle will be over. After the battle you gain gold and experience points. The gold can be used to buy card pack from the Buy Packs menu and the experienc points can level up your Avocado when you have enough and your Avocado's stats will increase with your level when that happens.
+
+### Credits
+Ryan Toth
+Scott McNalty
+Justin Turner
+Casey Doyle

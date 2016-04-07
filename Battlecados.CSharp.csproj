@@ -72,6 +72,7 @@
     <Compile Include="Assets\AudioSources.cs" />
     <Compile Include="Assets\Avocado.cs" />
     <Compile Include="Assets\AvocadoFactory.cs" />
+    <Compile Include="Assets\Battle\Scripts\Battle.cs" />
     <Compile Include="Assets\BronzePack.cs" />
     <Compile Include="Assets\Card Data\CardDatabase.cs" />
     <Compile Include="Assets\Card.cs" />
